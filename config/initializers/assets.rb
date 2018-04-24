@@ -4,5 +4,6 @@ Rails.application.config.assets.precompile += %w(admin.css
 Rails.application.config.assets.precompile += %w(admin.js
   home_slide.js
   ticket.js
-  booking.js)
+  booking.js
+  index_admin.js)
 Rails.application.config.assets.paths << Rails.root.join("node_modules")

@@ -37,4 +37,22 @@ en:
   lorem_email: "abc@gmail.com"
   _header:
     dashboard: "Dashboard"
-
+  status: "Status"
+  stt: "STT"
+  action: "Action"
+  menu: 
+    user: "Users"
+    ticket: "Tickets"
+    seat: "Seats"
+    schedule: "Schedules"
+    cinemaroom: "Cinemarooms"
+    movie_type: "MovieTypes"
+    movie: "Movies"
+    studio: "Studios"
+  Movies:
+    name: "Movies"
+    year_product: "Product year"
+    broadcasting_time: "Broadcasting time"
+    descreption: "Descreption"
+    trailer: "Trailer"
+    image: "Image"
