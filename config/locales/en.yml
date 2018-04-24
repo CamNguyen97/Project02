@@ -40,6 +40,10 @@ en:
   status: "Status"
   stt: "STT"
   action: "Action"
+  unaction: "Unaction"
+  save_change: "Save change"
+  add: "ADD"
+  upadte: "Update"
   menu: 
     user: "Users"
     ticket: "Tickets"

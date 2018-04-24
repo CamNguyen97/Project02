@@ -18,6 +18,11 @@ gem "sqlite3"
 gem "config"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
+gem 'carrierwave', '1.2.2'
+gem 'mini_magick', '4.7.0'
+gem 'fog', '1.42'
+gem "figaro"
+gem "unf"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
