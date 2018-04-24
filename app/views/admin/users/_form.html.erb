@@ -1,0 +1,31 @@
+<%= form_for [:admin, @users] do |f| %>
+<div class="form-group">
+  <%= f.label :name %>
+  <%= f.text_field :name, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :num_of_collum %>
+  <%= f.text_field :num_of_collum ,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :seat_type %>
+  <%= f.text_field :seat_type ,class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :cinemaroom_id %>
+  <%= f.text_field :cinemaroom_id ,class: "form-control" %>
+</div>
+
+<%= f.label :status %>
+<div class="form-group">
+  <%= label :status, t("model.users.actived") %>
+  <%= f.radio_button :status, "1",:checked => true %>
+  <%= label :status, t("model.disactive") %>
+  <%= f.radio_button :status, "0" %>
+</div>
+
+<%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
