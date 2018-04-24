@@ -1,0 +1,44 @@
+  <div class="content">
+  <div class="wrap">
+    <div class="content-top">
+      <div class="section group">
+        <div class="about span_1_of_2">
+          <h3><%= t "details_movie" %></h3>
+          <div class="about-top">
+            <div class="grid images_3_of_2">
+              <%= link_to image_tag("pic13.jpg", alt: "", class: "col"), "#" %>
+            </div>
+            <div class="desc span_3_of_2">
+              <h4> @movie.name </h4>
+              <p><%= t "produce_year" %> @movie.produce_year.strftime("%Y") </p>
+              <p><%= t "broadcasing_time" %> @movie.broadcasing_time 
+                <%= t "minute" %>
+              </p>
+              <p> @movie.description </p>
+              <p><%= t "show_case" %> @time.show_case </p>
+              <%= link_to t("watch"), "#", class: "watch_but" %>
+              <%= link_to t("booking_ticket"), "schedule_path(@movie)", class: "booking-ticket" %>
+            </div>
+            <div class="clear"></div>
+          </div>
+          <%= link_to t("more_movie"), "#", class: "watch_but" %>
+        </div>
+        <div class="rightsidebar span_3_of_1">
+          <h3><%= t "most_premieres" %></h3>
+          <div class="small_box premier">
+            <%= link_to image_tag("pic15.jpg", alt: "", class: "col"), "#" %>
+            <div class="clear"></div>
+          </div>
+          <h3><%= t "last_new" %></h3>
+          <ul class="latest_news">
+            <li>
+              <span class="date"><%= t "time" %></span><br>
+              <%= link_to t("lorem"), "#", class: "button" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<div id="img_page">
+  <h1><%= t "movies_seat" %></h1>
+  <div class="container">
+    <div class="w3ls-reg">
+      <div class="inputForm">
+        <h2><%= t "lorem" %></h2>
+        <div class="mr_agilemain">
+          <div class="agileits-left">
+            <%= label_tag t("name") %>
+            <span>*</span>
+            <%= text_field_tag "","", {class: "Username"}%>
+          </div>
+          <div class="agileits-right">
+            <%= label_tag t("number_seat") %>
+            <span>*</span>
+            <%= number_field_tag "quantity", 1, class: "Numseats", min: 1 %>
+          </div>
+        </div>
+        <%= button_tag t("search_seat"), :onclick => "takeData()" %>
+      </div>
+      <div>
+      <ul class="seat_w3ls">
+        <li class="smallBox greenBox"><%= t "selected_seat" %></li>
+        <li class="smallBox redBox"><%= t "reserved_seat" %></li>
+        <li class="smallBox emptyBox"><%= t "empty_seat" %></li>
+      </ul>
+      <div class="seatStructure txt-center" >
+        <table id="seatsBlock">
+          <tr>
+            <td></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+            <td></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+            <td><%= Settings.booking_ticket.seat %></td>
+          </tr>
+          <tr>
+            <td><%= t "row" %></td>
+            <td>
+              <%= check_box "post", "validated", {class: "seats"} %>
+            </td>
+            </td>
+            <td class="seatGap"></td>
+            <td>
+              <%= check_box "post", "validated", {class: "seats"} %>
+            </td>
+          </tr>
+          <tr class="seatVGap"></tr>
+          <tr>
+            <td><%= t "row" %></td>
+            <td>
+              <%= check_box "post", "validated", {class: "seats"} %>
+            </td>
+            <td></td>
+            <td>
+              <%= check_box "post", "validated", {class: "seats"} %>
+            </td>
+          </tr>
+        </table>
+        <div class="screen">
+          <h2 class="wthree"><%= t "screen" %></h2>
+        </div>
+        <%= button_tag t("confirm_selection") %>
+      </div>
+      <div class="displayerBoxes txt-center" >
+        <table class="Displaytable w3ls-table" >
+          <tr>
+            <th><%= t "name" %></th>
+            <th><%= t "number_seat" %></th>
+            <th><%= t "seat" %></th>
+          </tr>
+          <tr>
+            <td>
+              <textarea id="nameDisplay"></textarea>
+            </td>
+            <td>
+              <textarea id="NumberDisplay"></textarea>
+            </td>
+            <td>
+              <textarea id="seatsDisplay"></textarea>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<%= javascript_include_tag "booking" %>
