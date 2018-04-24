@@ -44,6 +44,10 @@ en:
   save_change: "Save change"
   add: "ADD"
   upadte: "Update"
+  suscess: "Add suscess"
+  danger: "Fails"
+  edit: "Update"
+  delete: "Delete"
   menu: 
     user: "Users"
     ticket: "Tickets"

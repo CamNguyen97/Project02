@@ -7,9 +7,11 @@ class Admin::MoviesController < Admin::ApplicationController
   def create
   	@movies = Movie.new movie_params
     if @movies.save
+       flash[:suscces] = t "suscess"
       redirect_to admin_movies_path
     else
-
+      flash[:danger] = t "danger"
+      render :new
     end
   end
 
@@ -23,7 +25,13 @@ class Admin::MoviesController < Admin::ApplicationController
   
  
   def update
-  	
+  	if @movies.update_attributes movie_params
+      flash[:suscces] = t "suscess"
+      redirect_to admin_movies_path
+    else
+      flash[:danger] = t "danger"
+      render :edit
+    end
   end
 
   def destroy
@@ -37,6 +45,6 @@ class Admin::MoviesController < Admin::ApplicationController
   end
 
   def movie_read
-  	@movie = Movie.find_by id: params[:id] if params[:id].empty?
+  	@movies = Movie.find_by id: params[:id]
   end
 end

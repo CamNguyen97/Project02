@@ -1,4 +1,4 @@
-<%= form_for [:admin, @movies] do |f| %>
+raou<%= form_for [:admin, @movies] do |f| %>
   <div class="form-group">
     <%= f.label :name %>
     <%= f.text_field :name, class: "form-control" %>
@@ -25,7 +25,7 @@
   </div>
 
    <div class="form-group">
-    <%= image_tag("", class: "menu_icon", size: "500x250") %>
+    <%= image_tag(@movies.image, size: "500x250") %>
     </div>
     <div class="form-group">
     <%= f.file_field :image, {action: :upload} %>
