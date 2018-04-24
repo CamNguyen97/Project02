@@ -1,0 +1,49 @@
+<div class="content">
+  <div class="wrap">
+    <div class="content-top">
+      <div class="section group">
+        <div class="col span_2_of_3">
+          <div class="contact-form">
+            <h3><%= t "contact_us" %></h3>
+            <%= form_for :person do |f| %>
+              <div>
+                <%= label_tag t "user_name" %>
+                <%= f.text_field :first_name %>
+              </div>
+              <div>
+                <%= label_tag t "email_contact" %>
+                <%= f.text_field :first_name %>
+              </div>
+              <div>
+                <%= label_tag t "mobile" %>
+                <%= f.text_field :first_name %>
+              </div>
+              <div>
+                <%= label_tag t "subject" %>
+                <%= text_area :comment, :text %>
+              </div>
+              <%= f.submit %>
+            <% end %>
+          </div>
+        </div>
+        <div class="col span_1_of_3">
+          <div class="company_address">
+            <h3><%= t "lorem" %></h3>
+            <p><%= t "lorem" %></p>
+            <p><%= t "country" %></p>
+            <p><%= t "phone" %><%= t "lorem_phone" %></p>
+            <p><%= t "phone" %><%= t "lorem_phone" %></p>
+            <p><%= t "email" %>
+              <span><%= link_to t("lorem_email"), "#" %></span>
+            </p>
+            <p><%= t "follow" %>
+              <span><%= link_to t("facebook"), "#" %></span>,
+              <span><%= link_to t("twitter"), "#" %></span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>

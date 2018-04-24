@@ -1,0 +1,49 @@
+<div class="header">
+  <div class="header-top">
+    <div class="wrap">
+      <div class="banner-no">
+        <%= link_to image_tag("banner-no.png", alt: ""), "" %>
+      </div>
+      <div class="nav-wrap">
+        <ul class="group" id="example-one">
+          <li class="current_page_item"><%= link_to t("home"), root_path %></li>
+          <li><%= link_to t("event"), event_path %></li>
+          <li><%= link_to t("contact"), contact_path %></li>
+          <% if 1==1 %>
+            <li>
+              <%= link_to "logout_path", {method: :delete, class: "nav-link"} do %>
+                <i class="fa fa-fw fa-sign-out"></i><%= t "logout" %>
+              <% end %>
+            </li>
+          <% else %>
+            <li><%= link_to t("login"), login_path %></li>
+          <% end %>
+          <li><%= link_to t("english"), locale:"en" %></li>
+          <li><%= link_to t("vietnam"), locale:"vi" %></li>
+        </ul>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+  <div class="block">
+    <div class="wrap">
+      <div class="h-logo">
+        <%= link_to "#" do %>
+          <%= link_to image_tag("logo.png", alt: ""), "" %>
+        <% end %>
+      </div>
+      <div id="reservation-form">
+        <fieldset>
+          <div class="field">
+            <%= label_tag t "find_movie" %>
+            <%= form_tag "movies_path", :method => "get"  do %>
+              <%= text_field_tag :search, params[:search]%>
+              <%= submit_tag t("search"), :name => nil  %>
+            <% end %>
+          </div>
+        </fieldset>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </div>
+</div>

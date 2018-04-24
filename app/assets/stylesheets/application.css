@@ -1,5 +1,8 @@
 /*
+ *= require flexslider
+ *= require lightbox
+ *= require style1
+ *= require tsc_tabs
  *= require font-awesome
- *= require_tree .
- *= require_self
+ *= require error
  */

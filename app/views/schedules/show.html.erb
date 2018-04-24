@@ -1,0 +1,61 @@
+<div id="cboxContent" >
+   <div id="cboxLoadedContent" >
+      <div class="product-view quick-booking cgv-schedule-popup">
+         <div class="product-collateral toggle-content tabs tabs-cgv-movie-view-date">
+            <dl id="collateral-tabs" class="collateral-tabs">
+               <dd class="tab-container current">
+                  <div class="tab-content showtimes">
+                     <div class="product-collateral toggle-content tabs tabs-cgv-movie-cites">
+                        <dl id="collateral-tabs" class="collateral-tabs">
+                           <dd class="tab-container current">
+                              <div class="product-collateral toggle-content tabs tabs-cgv-movie-type">
+                                 <ul class="toggle-tabs">
+                                    <li class="last current">
+                                       <span><%= link_to t("come_back_home"), root_path %></span>
+                                    </li>
+                                 </ul>
+                                 <dl id="collateral-tabs" class="collateral-tabs">
+                                    <dd class="tab-container last current">
+                                       <div class="tab-content showtimes">
+                                          <div class="site sitecgv">
+                                             <div class="site">
+                                                <h3> @movie_name.name </h3>
+                                             </div>
+                                             <div class="cinema 2d">
+                                                <h4><%= t "type_schedule" %></h4>
+                                             </div>
+                                             <div id="schedule_display">
+                                                   <ul class="products-grid-movie tab-showtime" >
+                                                      <li class="item" >
+                                                         <%= link_to "#" do %>
+                                                            <span> t "room" :  item.id </span><br>
+                                                            <span> item.schedule.date_movie.strftime("%d/%m/%Y") </span><br>
+                                                            <span> item.schedule.start_time.strftime("%H:%M") </span><br>
+                                                            <span> item.cinemaroom.num_of_seats </span><br>
+                                                         <% end %>   
+                                                         </a>
+                                                      </li>
+                                                   </ul>
+                                             </div>
+                                          </div>
+                                    </dd>
+                                 </dl>
+                              </div>
+                           </dd>
+                           <dd class="tab-container last">
+                              <div class="product-collateral toggle-content tabs tabs-cgv-movie-type">
+                                 </ul>
+                                 <dl id="collateral-tabs" class="collateral-tabs">
+                                    <dd class="tab-container last current">
+                                    </dd>
+                                 </dl>
+                              </div>
+                           </dd>
+                        </dl>
+                     </div>
+                  </div>
+               </dd>
+         </div>
+      </div>
+   </div>
+</div>
