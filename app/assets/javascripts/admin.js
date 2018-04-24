@@ -1,5 +1,7 @@
-//= require jquery
+//= require jquery.min-admin
 //= require bootstrap.min
-//= require dataTables.bootstrap
+//= require metisMenu
+//= require jquery.dataTables.min
+//= require dataTables.bootstrap.min
 //= require dataTables.responsive
 //= require sb-admin-2

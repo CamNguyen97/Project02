@@ -1,0 +1,13 @@
+<%= form_for [:admin, @movies_movietypes] do |f| %>
+<div class="form-group">
+  <%= f.label :movie_id %>
+  <%= f.text_field :movie_id, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :movietype_id %>
+  <%= f.text_field :movietype_id, class: "form-control" %>
+</div>
+
+<%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

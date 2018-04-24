@@ -1,0 +1,32 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <%= link_to t("dashboard") %>
+  </li>
+  <li class="breadcrumb-item active"><%= t ".user" %></li>
+</ol>
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <%= render "headerTable" %>
+        </thead>
+        <tbody>
+          <% @users.each_with_index do |item, index| %>
+          <tr>
+            <td><%= Index index %></td>
+            <td><%= item.name %></td>
+            <td><%= item.address %></td>
+            <td><%= item.phone %></td>
+            <td><%= item.email %></td>
+            <td><%= item.status %></td>
+            <td><%= item.role %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

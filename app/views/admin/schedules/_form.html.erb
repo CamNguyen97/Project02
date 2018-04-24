@@ -1,0 +1,27 @@
+<%= form_for [:admin, @schedules] do |f| %>
+<div class="form-group">
+  <%= f.label :show_case %>
+  <%= f.text_field :show_case, class: "form-control" %>
+</div>
+
+<div class="form-group">
+  <%= f.label :date_movie %>
+  <%= f.date_field :date_movie ,class: "form-control", value: @schedules.date_movie || Date.today.strftime("%Y-%m-%d") %>
+</div>
+
+<div class="form-group">
+  <%= f.label :movie_id %>
+   <%= f.select :movie_id, @list_movie,
+      {include_blank: "Choose one",selected: @schedules.movie_id},
+      {class: "form-control"} %></div>
+
+<%= f.label :status %>
+<div class="form-group">
+  <%= label :status, t("action") %>
+  <%= f.radio_button :status, "1",:checked => true %>
+  <%= label :status, t("unaction") %>
+  <%= f.radio_button :status, "0" %>
+</div>
+
+<%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>
