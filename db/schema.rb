@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180423143811) do
+ActiveRecord::Schema.define(version: 20180425101404) do
 
   create_table "cinemarooms", force: :cascade do |t|
     t.string "name"
@@ -55,8 +55,16 @@ ActiveRecord::Schema.define(version: 20180423143811) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "schedule_times", force: :cascade do |t|
+    t.string "time"
+    t.boolean "status"
+    t.boolean "is_delete"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "schedules", force: :cascade do |t|
-    t.integer "show_case"
+    t.integer "schedule_time_id"
     t.date "date_movie"
     t.boolean "status"
     t.integer "movie_id"
@@ -64,6 +72,7 @@ ActiveRecord::Schema.define(version: 20180423143811) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_schedules_on_movie_id"
+    t.index ["schedule_time_id"], name: "index_schedules_on_schedule_time_id"
   end
 
   create_table "seats", force: :cascade do |t|
