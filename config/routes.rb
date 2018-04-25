@@ -6,8 +6,16 @@ Rails.application.routes.draw do
   get "/schedules", to: "schedules#show"
   get "/booking", to: "tickets#index"
   resources :homes
-   namespace :admin do
-   	 resources :homes
-   	 resources :movies
+  
+  namespace :admin do
+    resources :homes
+    resources :movies
+    resources :schedules
+    resources :cinemarooms
+    resources :seats
+    resources :users
+    resources :studios
+    resources :movietypes
+    resources :movies_movietypes
    end
 end

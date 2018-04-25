@@ -1,0 +1,33 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <%= link_to t("dashboard") %>
+  </li>
+  <li class="breadcrumb-item active"><%= t ".movietype" %></li>
+   <%= button_tag t("add"), class: "btn btn-primary btn-add btn-movietypes" %>
+</ol>
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <%= render "headerTable" %>
+        </thead>
+        <tbody>
+          <% @movietypes.each_with_index do |item, index| %>
+          <tr>
+            <td><%= Index index %></td>
+            <td><%= item.name %></td>
+            <td><%= item.status %></td>
+            <td>
+              <%= link_to t("edit"), edit_admin_movietype_path(item), class:"btn btn-info" %>
+              <%= link_to t("delete"), admin_movietypes_path(item), class:"btn btn-danger", method: :delete,data: { confirm: 'Are you sure?' } %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

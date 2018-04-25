@@ -23,7 +23,6 @@ class Admin::MoviesController < Admin::ApplicationController
   	
   end
   
- 
   def update
   	if @movies.update_attributes movie_params
       flash[:suscces] = t "suscess"
@@ -41,7 +40,7 @@ class Admin::MoviesController < Admin::ApplicationController
   private
 
   def movie_params
-  	params.require(:movie).permit :name, :year_produced, :broadcasting_time, :descreption, :trailer, :image, :status
+  	params.require(:movie).permit :name, :year_produced, :broadcasting_time, :descreption, :trailer, :image, :status, :studio_id
   end
 
   def movie_read
