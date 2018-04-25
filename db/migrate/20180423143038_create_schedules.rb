@@ -5,6 +5,7 @@ class CreateSchedules < ActiveRecord::Migration[5.1]
       t.date :date_movie
       t.boolean :status
       t.references :movie, index: true, foreign_key: true
+      t.references :cinemaroom, index: true, foreign_key: true
       t.boolean :is_delete
 
       t.timestamps

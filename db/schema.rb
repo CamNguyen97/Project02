@@ -10,17 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425101404) do
+ActiveRecord::Schema.define(version: 20180425145950) do
 
   create_table "cinemarooms", force: :cascade do |t|
     t.string "name"
     t.text "descreption"
     t.boolean "status"
-    t.integer "schedule_id"
+    t.integer "seat_of_1_sequence"
+    t.integer "num_of_sequence"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["schedule_id"], name: "index_cinemarooms_on_schedule_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -56,7 +56,8 @@ ActiveRecord::Schema.define(version: 20180425101404) do
   end
 
   create_table "schedule_times", force: :cascade do |t|
-    t.string "time"
+    t.string "start_time"
+    t.string "end_time"
     t.boolean "status"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
@@ -68,41 +69,49 @@ ActiveRecord::Schema.define(version: 20180425101404) do
     t.date "date_movie"
     t.boolean "status"
     t.integer "movie_id"
+    t.integer "cinemaroom_id"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cinemaroom_id"], name: "index_schedules_on_cinemaroom_id"
     t.index ["movie_id"], name: "index_schedules_on_movie_id"
     t.index ["schedule_time_id"], name: "index_schedules_on_schedule_time_id"
   end
 
+  create_table "seat_types", force: :cascade do |t|
+    t.integer "pay_ticket"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "seats", force: :cascade do |t|
-    t.string "num_of_row"
-    t.integer "num_of_collum"
-    t.boolean "seat_type"
-    t.integer "cinemaroom_id"
+    t.integer "seat_type_id"
     t.boolean "status"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["cinemaroom_id"], name: "index_seats_on_cinemaroom_id"
+    t.index ["seat_type_id"], name: "index_seats_on_seat_type_id"
   end
 
   create_table "studios", force: :cascade do |t|
     t.string "name"
     t.boolean "status"
+    t.integer "movie_id"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["movie_id"], name: "index_studios_on_movie_id"
   end
 
   create_table "tickets", force: :cascade do |t|
-    t.integer "pay_ticket"
+    t.integer "seat_id"
+    t.integer "schedule_id"
+    t.integer "user_id"
     t.boolean "status"
     t.boolean "is_delete"
-    t.integer "seat_id"
-    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_tickets_on_schedule_id"
     t.index ["seat_id"], name: "index_tickets_on_seat_id"
     t.index ["user_id"], name: "index_tickets_on_user_id"
   end
@@ -114,8 +123,8 @@ ActiveRecord::Schema.define(version: 20180425101404) do
     t.string "remember_digest"
     t.string "address"
     t.string "phone"
-    t.boolean "status"
     t.string "email"
+    t.boolean "status"
     t.integer "role"
     t.boolean "is_delete"
     t.datetime "created_at", null: false

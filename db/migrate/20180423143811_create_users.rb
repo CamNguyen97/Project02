@@ -7,8 +7,8 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :remember_digest
       t.string :address
       t.string :phone
-      t.boolean :status
       t.string :email
+      t.boolean :status
       t.integer :role, defaul: 0
       t.boolean :is_delete
 

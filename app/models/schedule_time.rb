@@ -1,3 +1,3 @@
 class ScheduleTime < ApplicationRecord
-  has_one :schedules, dependent: :destroy
+  has_many :schedules, dependent: :destroy
 end

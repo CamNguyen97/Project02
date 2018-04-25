@@ -1,5 +1,6 @@
 class Schedule < ApplicationRecord
   belongs_to :movie, optional: true
-  has_many :cinemarooms, dependent: :destroy
-  has_one :schedule_times, dependent: :destroy
+  belongs_to :scheduel_time, optional: true
+  belongs_to :cinemaroom, optional: true
+  has_many :tickets, dependent: :destroy
 end

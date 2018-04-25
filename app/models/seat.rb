@@ -1,4 +1,4 @@
 class Seat < ApplicationRecord
-  has_one :ticket, dependent: :destroy
-  belongs_to :cinemaroom, optional: true
+  has_many :tickets, dependent: :destroy
+  belongs_to :seat_type, optional: true
 end
