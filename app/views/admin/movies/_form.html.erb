@@ -26,10 +26,17 @@ raou<%= form_for [:admin, @movies] do |f| %>
   </div>
 
    <div class="form-group">
-    <%= image_tag(@movies.image, size: "500x250") %>
+    <%= image_tag(@movies.image, size: "500x250", class: "menu_icon") %>
     </div>
     <div class="form-group">
     <%= f.file_field :image, {action: :upload} %>
+  </div>
+
+  <div class="form-group">
+    <%= label :studio_id, t("Movies.studio_id") %>
+    <%= f.select :studio_id, @list_studio,
+      {include_blank: "Choose one",selected: @movies.studio_id},
+      {class: "form-control"} %>
   </div>
 
   <%= f.label :status %>
@@ -38,11 +45,6 @@ raou<%= form_for [:admin, @movies] do |f| %>
     <%= f.radio_button :status, "1",:checked => true %>
     <%= label :status, t("unaction") %>
     <%= f.radio_button :status, "0" %>
-  </div>
-
-  <div class="form-group">
-    <%= f.label :studio_id %>
-    <%= f.text_field :studio_id, class: "form-control" %>
   </div>
 
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>

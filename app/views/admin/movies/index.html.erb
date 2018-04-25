@@ -24,8 +24,8 @@
             <td><%= item.descreption %></td>
             <td><%= link_to item.trailer, item.trailer, target: "_blank" %></td>
             <td><%= image_tag item.image,  size: "100x50" %></td>
+            <td><%= Studio.find_by(id: item.studio_id).name %></td>
             <td><%= item.status %></td>
-            <td><%= item.studio_id %></td>
             <td>
             <%= link_to t("edit"), edit_admin_movie_path(item), class:"btn btn-info" %>
             <%= link_to t("delete"), admin_movies_path(item), class:"btn btn-danger", method: :delete,data: { confirm: 'Are you sure?' } %>
