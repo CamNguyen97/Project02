@@ -7,7 +7,14 @@ Rails.application.routes.draw do
   get "/booking", to: "tickets#index"
   resources :homes
   namespace :admin do
-   	resources :homes
-   	resources :movies
+    resources :homes
+    resources :movies
+    resources :schedules
+    resources :cinemarooms
+    resources :seats
+    resources :users
+    resources :studios
+    resources :movietypes
+    resources :movies_movietypes
    end
 end

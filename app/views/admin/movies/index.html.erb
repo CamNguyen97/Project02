@@ -22,14 +22,13 @@
             <td><%= item.year_produced %></td>
             <td><%= item.broadcasting_time %></td>
             <td><%= item.descreption %></td>
-            <td><%= item.trailer %></td>
+            <td><%= link_to item.trailer, item.trailer, target: "_blank" %></td>
+            <td><%= image_tag item.image,  size: "100x50" %></td>
+            <td><%= Studio.find_by(id: item.studio_id).name %></td>
             <td><%= item.status %></td>
-            <td><%= item.image %></td>
             <td>
-              <%= button_tag t("update"), data: item.id,
-                class: "btn btn-info btn-add btn-movie-update" %>
-              <%= button_tag t("delete"), data: item.id,
-                class: "btn btn-danger btn-add btn-movie-delete" %>
+            <%= link_to t("edit"), edit_admin_movie_path(item), class:"btn btn-info" %>
+            <%= link_to t("delete"), admin_movies_path(item), class:"btn btn-danger", method: :delete,data: { confirm: 'Are you sure?' } %>
             </td>
           </tr>
           <% end %>
