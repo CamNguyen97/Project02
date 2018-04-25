@@ -4,7 +4,8 @@ class CreateCinemarooms < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :descreption
       t.boolean :status
-      t.references :schedule, index: true, foreign_key: true
+      t.integer :seat_of_1_sequence
+      t.integer :num_of_sequence
       t.boolean :is_delete
 
       t.timestamps

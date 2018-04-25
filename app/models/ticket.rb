@@ -1,4 +1,5 @@
 class Ticket < ApplicationRecord
-  has_one :seat, dependent: :destroy
   belongs_to :user, optional: true
+  belongs_to :seat, optional: true
+  belongs_to :schedule, optional: true
 end

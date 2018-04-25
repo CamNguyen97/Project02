@@ -1,3 +1,3 @@
-class Cinemaroom < ApplicationRecord
+class ScheduleTime < ApplicationRecord
   has_many :schedules, dependent: :destroy
 end
