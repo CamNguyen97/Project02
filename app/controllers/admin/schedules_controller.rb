@@ -17,9 +17,11 @@ class Admin::SchedulesController < Admin::ApplicationController
 
   def new
     @schedules = Schedule.new
+    @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
   end
 
   def edit
+    @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
   end
 
   def update
@@ -39,7 +41,7 @@ class Admin::SchedulesController < Admin::ApplicationController
 
   def schedule_params
   	params.require(:schedule).permit :show_case, :date_movie, :status, 
-      :schedule_id
+      :movie_id
   end
 
   def schedule_read

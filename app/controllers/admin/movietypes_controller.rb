@@ -20,8 +20,11 @@ class Admin::MovietypesController < Admin::ApplicationController
   end
 
   def edit
+    
+  end
+
+  def update
     if @movietypes.update_attributes movietype_params
-    byebug
       flash[:suscces] = t "suscess"
       redirect_to admin_movietypes_path
     else
@@ -30,16 +33,13 @@ class Admin::MovietypesController < Admin::ApplicationController
     end
   end
 
-  def update
-  end
-
   def destroy
   end
 
   private
 
   def movietype_params
-  	params.require(:movie_type).permit :name, :status
+  	params.require(:movietype).permit :name, :status
   end
 
   def movietype_read

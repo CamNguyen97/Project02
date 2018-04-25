@@ -48,6 +48,7 @@ en:
   danger: "Fails"
   edit: "Update"
   delete: "Delete"
+  stt: "STT"
   menu: 
     user: "Users"
     ticket: "Tickets"

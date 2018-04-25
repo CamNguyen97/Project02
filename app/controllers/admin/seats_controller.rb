@@ -17,9 +17,11 @@ class Admin::SeatsController < Admin::ApplicationController
 
   def new
     @seats = Seat.new
+    @list_cinemaroom = Cinemaroom.all.map { |lst| [lst.name, lst.id] }
   end
 
   def edit
+    @list_cinemaroom = Cinemaroom.all.map { |lst| [lst.name, lst.id] }
   end
 
   def update

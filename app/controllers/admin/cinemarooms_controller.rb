@@ -17,9 +17,11 @@ class Admin::CinemaroomsController < Admin::ApplicationController
 
   def new
     @cinemarooms = Cinemaroom.new
+    @list_schedule = Schedule.all.map { |lst| [lst.show_case, lst.id] }
   end
 
   def edit
+    @list_schedule = Schedule.all.map { |lst| [lst.show_case, lst.id] }
   end
 
   def update

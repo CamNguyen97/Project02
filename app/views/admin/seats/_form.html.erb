@@ -16,7 +16,9 @@
 
 <div class="form-group">
   <%= f.label :cinemaroom_id %>
-  <%= f.text_field :cinemaroom_id ,class: "form-control" %>
+   <%= f.select :cinemaroom_id, @list_cinemaroom,
+      {include_blank: "Choose one",selected: @seats.cinemaroom_id},
+      {class: "form-control"} %>
 </div>
 
 <%= f.label :status %>

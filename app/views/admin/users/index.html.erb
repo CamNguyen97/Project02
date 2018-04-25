@@ -3,7 +3,6 @@
     <%= link_to t("dashboard") %>
   </li>
   <li class="breadcrumb-item active"><%= t ".user" %></li>
-   <%= button_tag t("add"), class: "btn btn-primary btn-add btn-users" %>
 </ol>
 <div class="card mb-3">
   <div class="card-body">
@@ -22,12 +21,6 @@
             <td><%= item.email %></td>
             <td><%= item.status %></td>
             <td><%= item.role %></td>
-            <td>
-              <%= button_tag t("update"), data: item.id,
-                class: "btn btn-info btn-add btn-users-update" %>
-              <%= button_tag t("delete"), data: item.id,
-                class: "btn btn-danger btn-add btn-users-delete" %>
-            </td>
           </tr>
           <% end %>
         </tbody>

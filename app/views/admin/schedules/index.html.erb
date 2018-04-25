@@ -3,7 +3,7 @@
     <%= link_to t("dashboard") %>
   </li>
   <li class="breadcrumb-item active"><%= t ".shedule" %></li>
-   <%= button_tag t("add"), class: "btn btn-primary btn-add btn-schedules" %>
+    <%= link_to t("add"),  new_admin_schedule_path, class: "btn btn-primary" %>
 </ol>
 <div class="card mb-3">
   <div class="card-body">
@@ -19,7 +19,7 @@
             <td><%= item.show_case %></td>
             <td><%= item.date_movie %></td>
             <td><%= item.status %></td>
-            <td><%= item.movie_id %></td>
+            <td><%= Movie.find_by(id: item.movie_id).name %></td>
             <td>
               <%= link_to t("edit"), edit_admin_schedule_path(item), class:"btn btn-info" %>
               <%= link_to t("delete"), admin_schedules_path(item), class:"btn btn-danger", method: :delete,data: { confirm: 'Are you sure?' } %>
