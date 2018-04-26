@@ -58,6 +58,7 @@ en:
     movie_type: "MovieTypes"
     movie: "Movies"
     studio: "Studios"
+    schedule_time: "Schedule time"
   Movies:
     name: "Movies"
     year_product: "Product year"
@@ -66,3 +67,6 @@ en:
     trailer: "Trailer"
     image: "Image"
     studio_id: "Studio"
+  Schedule_time:
+    start_time: "Begin time"
+    end_time: "End time"

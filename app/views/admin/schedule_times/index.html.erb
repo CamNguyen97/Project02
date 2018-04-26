@@ -1,0 +1,32 @@
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">
+    <%= link_to t("dashboard") %>
+  </li>
+  <li class="breadcrumb-item active"><%= t "menu.schedule_time" %></li>
+   <%= link_to t("add"), new_admin_schedule_time_path, class: "btn btn-primary" %>
+</ol>
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+        <tr>
+          <%= render "headerTable" %>
+        </tr>
+        </thead>
+        <tbody>
+          <% @scheduleTimes.each_with_index do |item, index| %>
+          <tr>
+            <td><%= Index index %></td>
+            <td><%= item.start_time %></td>
+            <td><%= item.end_time %></td>
+            <td><%= item.status %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+

@@ -16,5 +16,6 @@ Rails.application.routes.draw do
     resources :studios
     resources :movietypes
     resources :movies_movietypes
+    resources :schedule_times
    end
 end
