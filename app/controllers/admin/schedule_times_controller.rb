@@ -6,7 +6,6 @@ class Admin::ScheduleTimesController < Admin::ApplicationController
 
   def create
     @schedule_time = ScheduleTime.new scheduleTime_param
-    byebug
     if @schedule_time.save
        flash[:suscces] = t "suscess"
       redirect_to admin_schedule_times_path
@@ -41,7 +40,6 @@ class Admin::ScheduleTimesController < Admin::ApplicationController
 
   def scheduleTime_param
   	params.require(:schedule_time).permit :start_time, :end_time, :status
-    byebug
   end
 
   def scheduleTime_read
