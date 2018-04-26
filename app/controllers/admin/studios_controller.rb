@@ -1,5 +1,5 @@
 class Admin::StudiosController < Admin::ApplicationController
-  before_action :studio_read, except: %i(index)
+  before_action :studio_read, except: %w(index, create, new)
 
   
   def index
@@ -9,7 +9,7 @@ class Admin::StudiosController < Admin::ApplicationController
   def create
     @studio = Studio.new studio_params
     if @studio.save
-       flash[:suscces] = t "suscess"
+      flash[:suscces] = t "suscess"
       redirect_to admin_studios_path
     else
       flash[:danger] = t "danger"
@@ -26,7 +26,7 @@ class Admin::StudiosController < Admin::ApplicationController
 
   def update
     if @studio.update_attributes studio_params
-      flash[:suscces] = t "suscess"
+      # flash[:suscces] = t "suscess"
       redirect_to admin_studios_path
     else
       flash[:danger] = t "danger"

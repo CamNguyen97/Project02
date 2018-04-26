@@ -1,0 +1,13 @@
+<% @cinemarooms.each_with_index do |item, index| %>
+  <tr>
+    <td><%= Index index %></td>
+    <td><%= item.name %></td>
+    <td><%= item.descreption %></td>
+    <td><%= item.status %></td>
+    <td><%= item.schedule_id %></td>
+    <td>
+      <%= link_to t("edit"), edit_admin_cinemaroom_path(item), remote: true, class:"btn btn-info" %>
+    <%= link_to t("delete"), admin_cinemaroom_delete_path(item), remote: true, class:"btn btn-danger" %>
+    </td>
+  </tr>
+<% end %>

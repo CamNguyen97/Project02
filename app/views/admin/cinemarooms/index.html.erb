@@ -3,33 +3,24 @@
     <%= link_to t("dashboard") %>
   </li>
   <li class="breadcrumb-item active"><%= t ".cinemaroom" %></li>
-  <%= link_to t("add"), new_admin_cinemaroom_path, class: "btn btn-primary" %>
+  <%= link_to t("add"), new_admin_cinemaroom_path,remote: true, class: "btn btn-primary" %>
 </ol>
 <div class="card mb-3">
   <div class="card-body">
     <div class="table-responsive">
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
+        <td>
           <%= render "headerTable" %>
+          </td>
         </thead>
         <tbody>
-          <% @cinemarooms.each_with_index do |item, index| %>
-          <tr>
-            <td><%= Index index %></td>
-            <td><%= item.name %></td>
-            <td><%= item.descreption %></td>
-            <td><%= item.status %></td>
-            <td><%= item.schedule_id %></td>
-            <td>
-              <%= link_to t("edit"), edit_admin_cinemaroom_path(item), class:"btn btn-info" %>
-              <%= link_to t("delete"), admin_cinemarooms_path(item), class:"btn btn-danger", method: :delete,data: { confirm: 'Are you sure?' } %>
-            </td>
-          </tr>
-          <% end %>
+           <%= render "index" %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+<div id="product-modal" class="modal fade" role= "dialog"></div>
 
 

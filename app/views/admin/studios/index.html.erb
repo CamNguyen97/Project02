@@ -3,17 +3,18 @@
     <%= link_to t("dashboard") %>
   </li>
   <li class="breadcrumb-item active"><%= t ".shedule" %></li>
-   <%= link_to t("add"), new_admin_studio_path, remote: true, class: "add-new-studio" %>
-   <%# render "admin/studios/new.js.erb" %>
+   <%= link_to t("add"), new_admin_studio_path, remote: true, class: "btn btn-primary" %>
 </ol>
 <div class="card mb-3">
   <div class="card-body">
     <div class="table-responsive">
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
+        <td>
           <%= render "headerTable" %>
+        <td>
         </thead>
-        <tbody>
+        <tbody class="product-index">
           <%= render "index" %>
         </tbody>
       </table>

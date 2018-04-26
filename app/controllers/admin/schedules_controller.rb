@@ -5,8 +5,8 @@ class Admin::SchedulesController < Admin::ApplicationController
   end
 
   def create
-    @schedules = Schedule.new schedule_params
-    if @schedules.save
+    @schedule = Schedule.new schedule_params
+    if @schedule.save
        flash[:suscces] = t "suscess"
       redirect_to admin_schedules_path
     else
@@ -16,7 +16,7 @@ class Admin::SchedulesController < Admin::ApplicationController
   end
 
   def new
-    @schedules = Schedule.new
+    @schedule = Schedule.new
     @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
   end
 
@@ -25,7 +25,7 @@ class Admin::SchedulesController < Admin::ApplicationController
   end
 
   def update
-    if @schedules.update_attributes schedule_params
+    if @schedule.update_attributes schedule_params
       flash[:suscces] = t "suscess"
       redirect_to admin_schedules_path
     else
@@ -45,6 +45,6 @@ class Admin::SchedulesController < Admin::ApplicationController
   end
 
   def schedule_read
-    @schedules = Schedule.find_by id: params[:id]
+    @schedule = Schedule.find_by id: params[:id]
   end
 end

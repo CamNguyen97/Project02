@@ -5,8 +5,8 @@ class Admin::MoviesController < Admin::ApplicationController
   end
 
   def create
-  	@movies = Movie.new movie_params
-    if @movies.save
+  	@movie = Movie.new movie_params
+    if @movie.save
        flash[:suscces] = t "suscess"
       redirect_to admin_movies_path
     else
@@ -16,7 +16,7 @@ class Admin::MoviesController < Admin::ApplicationController
   end
 
   def new
-  	@movies = Movie.new
+  	@movie = Movie.new
     @list_studio = Studio.all.map { |lst| [lst.name, lst.id] }
   end
 
@@ -25,7 +25,7 @@ class Admin::MoviesController < Admin::ApplicationController
   end
   
   def update
-  	if @movies.update_attributes movie_params
+  	if @movie.update_attributes movie_params
       flash[:suscces] = t "suscess"
       redirect_to admin_movies_path
     else
@@ -45,6 +45,6 @@ class Admin::MoviesController < Admin::ApplicationController
   end
 
   def movie_read
-  	@movies = Movie.find_by id: params[:id]
+  	@movie = Movie.find_by id: params[:id]
   end
 end

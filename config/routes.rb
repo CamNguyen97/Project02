@@ -7,17 +7,35 @@ Rails.application.routes.draw do
   get "/booking", to: "tickets#index"
   resources :homes
   namespace :admin do
-    resources :homes
-    resources :movies
-    resources :schedules
-    resources :cinemarooms
-    resources :seats
-    resources :users
+    resources :homes do
+      get "delete"
+    end
+    resources :movies do
+      get "delete"
+    end
+    resources :schedules do
+      get "delete"
+    end
+    resources :cinemarooms do
+      get "delete"
+    end
+    resources :seats do
+      get "delete"
+    end
+    resources :users do
+      get "delete"
+    end
     resources :studios do
       get "delete"
     end
-    resources :movietypes
-    resources :movies_movietypes
-    resources :schedule_times
+    resources :movietypes do
+      get "delete"
+    end
+    resources :movies_movietypes do
+      get "delete"
+    end
+    resources :schedule_times do
+      get "delete"
+    end
    end
 end
