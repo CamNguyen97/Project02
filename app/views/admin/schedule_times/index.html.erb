@@ -15,12 +15,16 @@
         </tr>
         </thead>
         <tbody>
-          <% @scheduleTimes.each_with_index do |item, index| %>
+          <% @schedule_times.each_with_index do |item, index| %>
           <tr>
             <td><%= Index index %></td>
             <td><%= item.start_time %></td>
             <td><%= item.end_time %></td>
             <td><%= item.status %></td>
+            <td>
+              <%= link_to t("edit"), edit_admin_schedule_time_path(item), class:"btn btn-info" %>
+              <%= link_to t("delete"), admin_movietypes_path(item), class:"btn btn-danger", method: :delete,data: { confirm: 'Are you sure?' } %>
+            </td>
           </tr>
           <% end %>
         </tbody>

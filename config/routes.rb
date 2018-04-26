@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     resources :cinemarooms
     resources :seats
     resources :users
-    resources :studios
+    resources :studios do
+      get "delete"
+    end
     resources :movietypes
     resources :movies_movietypes
     resources :schedule_times

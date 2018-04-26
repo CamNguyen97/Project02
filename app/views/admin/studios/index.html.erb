@@ -3,7 +3,8 @@
     <%= link_to t("dashboard") %>
   </li>
   <li class="breadcrumb-item active"><%= t ".shedule" %></li>
-    <%= link_to t("add"), new_admin_studio_path, class: "btn btn-primary" %>
+   <%= link_to t("add"), new_admin_studio_path, remote: true, class: "add-new-studio" %>
+   <%# render "admin/studios/new.js.erb" %>
 </ol>
 <div class="card mb-3">
   <div class="card-body">
@@ -13,21 +14,12 @@
           <%= render "headerTable" %>
         </thead>
         <tbody>
-          <% @studios.each_with_index do |item, index| %>
-          <tr>
-            <td><%= Index index %></td>
-            <td><%= item.name %></td>
-            <td><%= item.status %></td>
-            <td>
-              <%= link_to t("edit"), edit_admin_studio_path(item), class:"btn btn-info" %>
-              <%= link_to t("delete"), admin_studios_path(item), class:"btn btn-danger", method: :delete,data: { confirm: 'Are you sure?' } %>
-            </td>
-          </tr>
-          <% end %>
+          <%= render "index" %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+<div id="product-modal" class="modal fade" role= "dialog"></div>
 
 

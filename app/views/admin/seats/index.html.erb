@@ -22,7 +22,8 @@
             <td><%= item.cinemaroom_id %></td>
             <td><%= item.status %></td>
             <td>
-              <%= link_to t("edit"), edit_admin_seat_path(item), class:"btn btn-info" %>
+              <%= link_to t("edit"), edit_admin_seat_path(item),{class:"btn btn-info","data-toggle":"modal", "data-target":"#myModal"} %>
+              <!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button> -->
               <%= link_to t("delete"), admin_seats_path(item), class:"btn btn-danger", method: :delete,data: { confirm: 'Are you sure?' } %>
             </td>
           </tr>

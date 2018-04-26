@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem "bootstrap-sass"
 gem "coffee-rails", "~> 4.2"
 gem "font-awesome-rails"
 gem "jbuilder", "~> 2.5"
@@ -18,9 +19,9 @@ gem "sqlite3"
 gem "config"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
-gem 'carrierwave', '1.2.2'
-gem 'mini_magick', '4.7.0'
-gem 'fog', '1.42'
+gem "carrierwave", "1.2.2"
+gem "mini_magick", "4.7.0"
+gem "fog", "1.42"
 gem "figaro"
 gem "unf"
 
