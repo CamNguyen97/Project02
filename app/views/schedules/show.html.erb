@@ -19,23 +19,23 @@
                                        <div class="tab-content showtimes">
                                           <div class="site sitecgv">
                                              <div class="site">
-                                                <h3> @movie_name.name </h3>
+                                                <h3><%= @schedules.name %></h3>
                                              </div>
                                              <div class="cinema 2d">
                                                 <h4><%= t "type_schedule" %></h4>
                                              </div>
                                              <div id="schedule_display">
+                                                <% @schedules.each do |item| %>
                                                    <ul class="products-grid-movie tab-showtime" >
                                                       <li class="item" >
-                                                         <%= link_to "#" do %>
-                                                            <span> t "room" :  item.id </span><br>
-                                                            <span> item.schedule.date_movie.strftime("%d/%m/%Y") </span><br>
-                                                            <span> item.schedule.start_time.strftime("%H:%M") </span><br>
-                                                            <span> item.cinemaroom.num_of_seats </span><br>
+                                                         <%= link_to "ticket_path(@movie_name)" do %>
+                                                            <span><%= t "room" %>: <%= item.id %></span><br>
+                                                            <span><%= item.broadcasting_time %></span><br>
                                                          <% end %>   
                                                          </a>
                                                       </li>
                                                    </ul>
+                                                <% end %>
                                              </div>
                                           </div>
                                     </dd>
