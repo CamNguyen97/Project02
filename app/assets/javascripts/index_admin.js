@@ -1,7 +1,4 @@
 $("#dataTable").dataTable();
-$(".btn-movies").click(function() {
-    window.location.href = "/admin/movies/new";
- });
 function readURL(input) {
 
   if (input.files && input.files[0]) {
@@ -14,7 +11,6 @@ function readURL(input) {
     reader.readAsDataURL(input.files[0]);
   }
 }
-
 $("#movie_image").change(function() {
   readURL(this);
 });

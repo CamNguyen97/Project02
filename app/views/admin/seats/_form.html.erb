@@ -8,8 +8,10 @@
         <%= form_for [:admin, @seat] do |f| %>
 
         <div class="form-group">
-          <%= f.label :seat_type %>
-          <%= f.text_field :seat_type ,class: "form-control" %>
+          <%= f.label :seat_type_id %>
+          <%= f.select :seat_type_id, @list_schedule,
+            {include_blank: "Choose one",selected: @seat.seat_type_id},
+            {class: "form-control"} %>
         </div>
 
         <%= f.label :status %>
