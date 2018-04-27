@@ -1,2 +1,5 @@
 booking_ticket:
   seat: 1
+model:
+  movie:
+    num_movie_show: 5

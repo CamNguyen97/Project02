@@ -4,8 +4,8 @@ class CreateCinemarooms < ActiveRecord::Migration[5.1]
       t.string :name
       t.text :descreption
       t.boolean :status
-      t.integer :seat_of_1_sequence
-      t.integer :num_of_sequence
+      t.integer :sum_of_row
+      t.integer :sum_of_collum
       t.boolean :is_delete
 
       t.timestamps

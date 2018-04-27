@@ -36,9 +36,9 @@
         <fieldset>
           <div class="field">
             <%= label_tag t "find_movie" %>
-            <%= form_tag "movies_path", :method => "get"  do %>
+            <%= form_tag searchs_path, :method => "get"  do %>
               <%= text_field_tag :search, params[:search]%>
-              <%= submit_tag t("search"), :name => nil  %>
+              <%= submit_tag "Search", :name => nil  %>
             <% end %>
           </div>
         </fieldset>

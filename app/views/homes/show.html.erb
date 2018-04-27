@@ -3,21 +3,22 @@
     <div class="content-top">
       <div class="section group">
         <div class="about span_1_of_2">
-          <h3><%= t "details_movie" %></h3>
+          <h3><%= t "last_movie" %></h3>
           <div class="about-top">
             <div class="grid images_3_of_2">
               <%= link_to image_tag("pic13.jpg", alt: "", class: "col"), "#" %>
             </div>
             <div class="desc span_3_of_2">
-              <h4> @movie.name </h4>
-              <p><%= t "produce_year" %> @movie.produce_year.strftime("%Y") </p>
-              <p><%= t "broadcasing_time" %> @movie.broadcasing_time 
+              <h4><%= @movie.name %></h4>
+              <p><%= t "produce_year" %><%= @movie.year_produced %></p>
+              <p><%= t "broadcasing_time" %><%= @movie.broadcasting_time %>
                 <%= t "minute" %>
               </p>
-              <p> @movie.description </p>
-              <p><%= t "show_case" %> @time.show_case </p>
-              <%= link_to t("watch"), "#", class: "watch_but" %>
-              <%= link_to t("booking_ticket"), "schedule_path(@movie)", class: "booking-ticket" %>
+              <p><%= t "trailer" %><%= @movie.trailer %>
+              </p>
+              <p><%= @movie.descreption %></p>
+              <%= link_to t("watch"), " @movie.trailer ", class: "watch_but" %>
+              <%= link_to t("booking_ticket"), schedule_path(@movie), class: "booking-ticket" %>
             </div>
             <div class="clear"></div>
           </div>

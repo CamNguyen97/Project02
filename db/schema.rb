@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.string "name"
     t.text "descreption"
     t.boolean "status"
-    t.integer "seat_of_1_sequence"
-    t.integer "num_of_sequence"
+    t.integer "sum_of_row"
+    t.integer "sum_of_collum"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -86,6 +86,8 @@ ActiveRecord::Schema.define(version: 20180425145950) do
 
   create_table "seats", force: :cascade do |t|
     t.integer "seat_type_id"
+    t.string "num_of_row"
+    t.integer "num_of_collum"
     t.boolean "status"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
