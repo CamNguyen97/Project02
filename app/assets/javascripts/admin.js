@@ -6,3 +6,4 @@
 //= require dataTables.responsive
 //= require rails-ujs
 //= require sb-admin-2
+

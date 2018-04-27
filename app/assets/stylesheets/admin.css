@@ -5,4 +5,12 @@
  *= require dataTables.bootstrap
  *= require sb-admin-2
  */
- 
+ .text-center{
+ 	text-align: center;
+ }
+ .number{
+ 	text-align: right;
+ }
+ .text-right{
+ 	text-align: left;
+ }

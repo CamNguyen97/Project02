@@ -7,20 +7,40 @@
       <div class="modal-body">  
     <%= form_for [:admin, @schedule] do |f| %>
     <div class="form-group">
-      <%= f.label :show_case %>
-      <%= f.text_field :show_case, class: "form-control" %>
+      <%= f.label :schedule_time_id %>
+      <%= f.select :schedule_time_id, @list_schedule_time,
+          {include_blank: "Choose one",selected: @schedule.schedule_time_id},
+          {class: "form-control", onchange:"getData()"} %>
+    </div>
+
+    <div class="form-inline">
+      <div class="col-sm-6">
+        <%= text_field_tag "start_time", nil, placeholder: 'Start Time', class: "form-control",readonly: true %>
+      </div>
+      <div class="col-sm-6">
+        <%= text_field_tag "end_time", nil, placeholder: 'End Time', class: "form-control",readonly: true %>
+      </div>
     </div>
 
     <div class="form-group">
       <%= f.label :date_movie %>
-      <%= f.date_field :date_movie ,class: "form-control", value: @schedules.date_movie || Date.today.strftime("%Y-%m-%d") %>
+      <%= f.date_field :date_movie ,class: "form-control", value: @schedule.date_movie || Date.today.strftime("%Y-%m-%d") %>
     </div>
 
     <div class="form-group">
       <%= f.label :movie_id %>
        <%= f.select :movie_id, @list_movie,
-          {include_blank: "Choose one",selected: @schedules.movie_id},
-          {class: "form-control"} %></div>
+          {include_blank: "Choose one",selected: @schedule.movie_id},
+          {class: "form-control"} %>
+    </div>
+
+     <div class="form-group">
+      <%= f.label :cinemaroom_id %>
+       <%= f.select :cinemaroom_id, @list_cinemaroom,
+          {include_blank: "Choose one",selected: @schedule.cinemaroom_id},
+          {class: "form-control"} %>
+    </div>
+
 
     <%= f.label :status %>
     <div class="form-group">
@@ -38,4 +58,18 @@
      </div>
     </div>
   </div>
+  <script type="text/javascript">
+    function getData(){
+      var client_id = $("select#schedule_schedule_time_id :selected").val();
+      if (client_id == "") {client_id = "1";}
+      $.ajax({
+        url: '/admin/schedules/' + client_id + "/Getdata",
+        type: 'GET',
+        success: function(data) {
+          document.getElementById("start_time").value = data.start_time;
+          document.getElementById("end_time").value = data.end_time;
+        }
+      });
+    }
+  </script>>
 

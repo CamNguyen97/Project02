@@ -14,3 +14,5 @@ function readURL(input) {
 $("#movie_image").change(function() {
   readURL(this);
 });
+
+

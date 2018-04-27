@@ -1,12 +1,15 @@
-<% @schedules.each do |item| %>
+<% @schedules.each_with_index do |item, index| %>
   <tr>
-    <td><%= item.id %></td>
-    <td><%= item.show_case %></td>
-    <td><%= item.date_movie %></td>
-    <td><%= item.status %></td>
+    <td class="text-center"><%= Index index %></td>
+    <td style="display:none;"><%= item.schedule_time_id %></td>
+    <td class="number"><%= ScheduleTime.find_by(id: item.schedule_time_id).start_time %></td>
+    <td class="number"><%= ScheduleTime.find_by(id: item.schedule_time_id).end_time %></td>
+    <td class="text-center"><%= item.date_movie.strftime("%d/%m/%y") %></td>
     <td><%= Movie.find_by(id: item.movie_id).name %></td>
+    <td><%= Cinemaroom.find_by(id: item.cinemaroom_id).name %></td>
+    <td class="text-center"><%= item.status %></td>
     <td>
-      <%= link_to t("edit"), edit_admin_schedule_path(item), remote: true, class:"btn btn-info" %>
+      <%= link_to t("edit"), edit_admin_schedule_path(item), remote: true, class:"btn btn-info update-time" %>
     <%= link_to t("delete"), admin_schedule_delete_path(item), remote: true, class:"btn btn-danger" %>
     </td>
   </tr>

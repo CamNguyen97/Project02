@@ -19,9 +19,11 @@ class Admin::StudiosController < Admin::ApplicationController
 
   def new
     @studio = Studio.new
+    @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
   end
 
   def edit
+    @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
   end
 
   def update

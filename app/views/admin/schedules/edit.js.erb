@@ -1,2 +1,12 @@
 $("#product-modal").html("<%= j render(partial: "admin/schedules/edit") %>")
 $("#product-modal").modal("show")
+var client_id = $("#schedule_schedule_time_id").val();
+if (client_id == "") {client_id = "1";}
+$.ajax({
+  url: '/admin/schedules/' + client_id + "/Getdata",
+  type: 'GET',
+  success: function(data) {
+    document.getElementById("start_time").value = data.start_time;
+    document.getElementById("end_time").value = data.end_time;
+  }
+});

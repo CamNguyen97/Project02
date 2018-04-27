@@ -1,8 +1,8 @@
  <% @movietypes.each_with_index do |item, index| %>
   <tr>
-    <td><%= Index index %></td>
+    <td class="text-center"><%= Index index %></td>
     <td><%= item.name %></td>
-    <td><%= item.status %></td>
+    <td class="text-center"><%= item.status %></td>
     <td>
      <%= link_to t("edit"), new_admin_movietype_path(item), remote: true, class:"btn btn-info" %>
     <%= link_to t("delete"), admin_movietype_delete_path(item), remote: true, class:"btn btn-danger" %>

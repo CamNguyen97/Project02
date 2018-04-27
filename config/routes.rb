@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
     resources :schedules do
       get "delete"
+      get "Getdata", action: "getdataTime"
     end
     resources :cinemarooms do
       get "delete"
