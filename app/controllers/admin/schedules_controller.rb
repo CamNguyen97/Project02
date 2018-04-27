@@ -5,8 +5,8 @@ class Admin::SchedulesController < Admin::ApplicationController
   end
 
   def create
-    @schedules = Schedule.new schedule_params
-    if @schedules.save
+    @schedule = Schedule.new schedule_params
+    if @schedule.save
        flash[:suscces] = t "suscess"
       redirect_to admin_schedules_path
     else
@@ -16,16 +16,20 @@ class Admin::SchedulesController < Admin::ApplicationController
   end
 
   def new
-    @schedules = Schedule.new
+    @schedule = Schedule.new
     @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
+    @list_cinemaroom = Cinemaroom.all.map { |lst| [lst.name, lst.id] }
+    @list_schedule_time = ScheduleTime.all.map { |lst| [lst.id, lst.id] }
   end
 
   def edit
     @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
+    @list_cinemaroom = Cinemaroom.all.map { |lst| [lst.name, lst.id] }
+    @list_schedule_time = ScheduleTime.all.map { |lst| [lst.id, lst.id] }
   end
 
   def update
-    if @schedules.update_attributes schedule_params
+    if @schedule.update_attributes schedule_params
       flash[:suscces] = t "suscess"
       redirect_to admin_schedules_path
     else
@@ -37,14 +41,18 @@ class Admin::SchedulesController < Admin::ApplicationController
   def destroy
   end
 
+  def getdataTime
+    @scheduleTime = ScheduleTime.find_by id: params[:schedule_id]
+    render json: @scheduleTime
+  end
+
   private
 
   def schedule_params
-  	params.require(:schedule).permit :show_case, :date_movie, :status, 
-      :movie_id
+  	params.require(:schedule).permit :schedule_time_id, :date_movie, :movie_id, :cinemaroom_id, :status 
   end
 
   def schedule_read
-    @schedules = Schedule.find_by id: params[:id]
+    @schedule = Schedule.find_by id: params[:id]
   end
 end

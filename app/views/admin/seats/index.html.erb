@@ -2,35 +2,25 @@
   <li class="breadcrumb-item">
     <%= link_to t("dashboard") %>
   </li>
-  <li class="breadcrumb-item active"><%= t ".seat" %></li>
-     <%= link_to t("add"),  new_admin_seat_path, class: "btn btn-primary" %>
+  <li class="breadcrumb-item active"><%= t "menu.movie" %></li>
+     <%= link_to t("add"),  new_admin_seat_path, remote: true, class: "btn btn-primary" %>
 </ol>
 <div class="card mb-3">
   <div class="card-body">
     <div class="table-responsive">
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
+        <tr>
           <%= render "headerTable" %>
+        </tr>
         </thead>
         <tbody>
-          <% @seats.each_with_index do |item, index| %>
-          <tr>
-            <td><%= Index index %></td>
-            <td><%= item.num_of_row %></td>
-            <td><%= item.num_of_collum %></td>
-            <td><%= item.seat_type %></td>
-            <td><%= item.cinemaroom_id %></td>
-            <td><%= item.status %></td>
-            <td>
-              <%= link_to t("edit"), edit_admin_seat_path(item), class:"btn btn-info" %>
-              <%= link_to t("delete"), admin_seats_path(item), class:"btn btn-danger", method: :delete,data: { confirm: 'Are you sure?' } %>
-            </td>
-          </tr>
-          <% end %>
+          <%= render "index" %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
+<div id="product-modal" class="modal fade" role= "dialog"></div>
 
 

@@ -1,0 +1,12 @@
+ <% @schedule_times.each_with_index do |item, index| %>
+  <tr>
+    <td><%= Index index %></td>
+    <td><%= item.start_time %></td>
+    <td><%= item.end_time %></td>
+    <td><%= item.status %></td>
+    <td>
+    <%= link_to t("edit"), edit_admin_schedule_time_path(item), remote: true, class:"btn btn-info" %>
+    <%= link_to t("delete"), admin_schedule_time_delete_path(item), remote: true, class:"btn btn-danger" %>
+    </td>
+  </tr>
+<% end %>

@@ -5,8 +5,8 @@ class Admin::SeatsController < Admin::ApplicationController
   end
 
   def create
-    @seats = Seat.new seat_params
-    if @seats.save
+    @seat = Seat.new seat_params
+    if @seat.save
        flash[:suscces] = t "suscess"
       redirect_to admin_seats_path
     else
@@ -16,7 +16,7 @@ class Admin::SeatsController < Admin::ApplicationController
   end
 
   def new
-    @seats = Seat.new
+    @seat = Seat.new
     @list_cinemaroom = Cinemaroom.all.map { |lst| [lst.name, lst.id] }
   end
 
@@ -25,7 +25,7 @@ class Admin::SeatsController < Admin::ApplicationController
   end
 
   def update
-    if @seats.update_attributes seat_params
+    if @seat.update_attributes seat_params
       flash[:suscces] = t "suscess"
       redirect_to admin_seats_path
     else
@@ -45,6 +45,6 @@ class Admin::SeatsController < Admin::ApplicationController
   end
 
   def seat_read
-    @seats = Seat.find_by id: params[:id]
+    @seat = Seat.find_by id: params[:id]
   end
 end

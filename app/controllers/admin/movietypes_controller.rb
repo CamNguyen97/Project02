@@ -5,8 +5,8 @@ class Admin::MovietypesController < Admin::ApplicationController
   end
 
   def create
-    @movietypes = Movietype.new movietype_params
-    if @movietypes.save
+    @movietype = Movietype.new movietype_params
+    if @movietype.save
        flash[:suscces] = t "suscess"
       redirect_to admin_movietypes_path
     else
@@ -16,7 +16,7 @@ class Admin::MovietypesController < Admin::ApplicationController
   end
 
   def new
-    @movietypes = Movietype.new
+    @movietype = Movietype.new
   end
 
   def edit
@@ -24,7 +24,7 @@ class Admin::MovietypesController < Admin::ApplicationController
   end
 
   def update
-    if @movietypes.update_attributes movietype_params
+    if @movietype.update_attributes movietype_params
       flash[:suscces] = t "suscess"
       redirect_to admin_movietypes_path
     else
@@ -43,6 +43,6 @@ class Admin::MovietypesController < Admin::ApplicationController
   end
 
   def movietype_read
-    @movietypes = Movietype.find_by id: params[:id]
+    @movietype = Movietype.find_by id: params[:id]
   end
 end

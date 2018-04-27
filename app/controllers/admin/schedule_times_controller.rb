@@ -1,12 +1,12 @@
 class Admin::ScheduleTimesController < Admin::ApplicationController
   before_action :scheduleTime_read, except: %W(index create new)
   def index
-  	@scheduleTimes = ScheduleTime.all
+  	@schedule_times = ScheduleTime.all
   end
 
   def create
-    @scheduleTimes = ScheduleTime.new scheduleTime_params
-    if @scheduleTimes.save
+    @schedule_time = ScheduleTime.new scheduleTime_param
+    if @schedule_time.save
        flash[:suscces] = t "suscess"
       redirect_to admin_schedule_times_path
     else
@@ -16,7 +16,7 @@ class Admin::ScheduleTimesController < Admin::ApplicationController
   end
 
   def new
-    @scheduleTimes = ScheduleTime.new
+    @schedule_time = ScheduleTime.new
   end
 
   def edit
@@ -24,7 +24,7 @@ class Admin::ScheduleTimesController < Admin::ApplicationController
   end
 
   def update
-    if @scheduleTimes.update_attributes scheduleTime_params
+    if @schedule_time.update_attributes scheduleTime_param
       flash[:suscces] = t "suscess"
       redirect_to admin_schedule_times_path
     else
@@ -38,12 +38,11 @@ class Admin::ScheduleTimesController < Admin::ApplicationController
 
   private
 
-  def scheduleTime_params
+  def scheduleTime_param
   	params.require(:schedule_time).permit :start_time, :end_time, :status
-    byebug
   end
 
   def scheduleTime_read
-    @movietypes = ScheduleTime.find_by id: params[:id]
+    @schedule_time = ScheduleTime.find_by id: params[:id]
   end
 end

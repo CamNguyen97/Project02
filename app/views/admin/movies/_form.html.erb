@@ -1,51 +1,65 @@
-raou<%= form_for [:admin, @movies] do |f| %>
-  <div class="form-group">
-    <%= f.label :name %>
-    <%= f.text_field :name, class: "form-control" %>
-  </div>
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= label_tag yield(:text_head)%></h4>
+      </div>
+      <div class="modal-body">
+      <%= form_for [:admin, @movie] do |f| %>
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: "form-control" %>
+        </div>
 
-  <div class="form-group">
-   <%= f.label :year_produced %>
-   <%= f.date_field :year_produced, class: "form-control" %>
-  </div>
+        <div class="form-group">
+         <%= f.label :year_produced %>
+         <%= f.date_field :year_produced, class: "form-control", value: @movie.year_produced || Date.today.strftime("%Y-%m-%d") %>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :broadcasting_time %>
-    <%= f.text_field :broadcasting_time, class: "form-control" %>
-  </div>
+        <div class="form-group">
+          <%= f.label :broadcasting_time %>
+          <%= f.text_field :broadcasting_time, class: "form-control" %>
+        </div>
 
 
-   <div class="form-group">
-    <%= f.label :trailer %>
-    <%= f.text_field :trailer, class: "form-control" %>
-  </div>
+         <div class="form-group">
+          <%= f.label :trailer %>
+          <%= f.text_field :trailer, class: "form-control" %>
+        </div>
 
-  <div class="form-group">
-    <%= f.label :descreption %>
-    <%= f.text_area :descreption, cols: 20, rows: 6,class: "form-control" %>
-  </div>
+        <div class="form-group">
+          <%= f.label :descreption %>
+          <%= f.text_area :descreption, cols: 20, rows: 6,class: "form-control" %>
+        </div>
 
-   <div class="form-group">
-    <%= image_tag(@movies.image, size: "500x250", class: "menu_icon") %>
+         <div class="form-group">
+          <%= image_tag(@movie.image, size: "500x250", class: "menu_icon") %>
+          </div>
+          <div class="form-group">
+          <%= f.file_field :image, {action: :upload} %>
+        </div>
+
+        <div class="form-group">
+          <%= label :studio_id, t("Movies.studio_id") %>
+          <%= f.select :studio_id, @list_studio,
+            {include_blank: "Choose one",selected: @movie.studio_id},
+            {class: "form-control"} %>
+        </div>
+
+        <%= f.label :status %>
+        <div class="form-group">
+          <%= label :status, t("action") %>
+          <%= f.radio_button :status, "1",:checked => true %>
+          <%= label :status, t("unaction") %>
+          <%= f.radio_button :status, "0" %>
+        </div>
+
+        <div class="modal-footer">
+          <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+          <%= link_to "Cancel", "#", class: "btn btn-default", data: {dismiss: "modal"} %>
+      </div>
+      <% end %>
+      </div>
     </div>
-    <div class="form-group">
-    <%= f.file_field :image, {action: :upload} %>
   </div>
-
-  <div class="form-group">
-    <%= label :studio_id, t("Movies.studio_id") %>
-    <%= f.select :studio_id, @list_studio,
-      {include_blank: "Choose one",selected: @movies.studio_id},
-      {class: "form-control"} %>
-  </div>
-
-  <%= f.label :status %>
-  <div class="form-group">
-    <%= label :status, t("action") %>
-    <%= f.radio_button :status, "1",:checked => true %>
-    <%= label :status, t("unaction") %>
-    <%= f.radio_button :status, "0" %>
-  </div>
-
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
-<% end %>
+  <%= javascript_include_tag "index_admin" %>

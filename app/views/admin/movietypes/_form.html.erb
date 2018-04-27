@@ -1,16 +1,29 @@
-<%= form_for [:admin, @movietypes] do |f| %>
-<div class="form-group">
-  <%= f.label :name %>
-  <%= f.text_field :name, class: "form-control" %>
-</div>
+<div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><%= label_tag yield(:text_head)%></h4>
+      </div>
+      <div class="modal-body">
+			<%= form_for [:admin, @movietype] do |f| %>
+			<div class="form-group">
+			  <%= f.label :name %>
+			  <%= f.text_field :name, class: "form-control" %>
+			</div>
 
-<%= f.label :status %>
-<div class="form-group">
-  <%= label :status, t("action") %>
-  <%= f.radio_button :status, "1",:checked => true %>
-  <%= label :status, t("unaction") %>
-  <%= f.radio_button :status, "0" %>
-</div>
+			<%= f.label :status %>
+			<div class="form-group">
+			  <%= label :status, t("action") %>
+			  <%= f.radio_button :status, "1",:checked => true %>
+			  <%= label :status, t("unaction") %>
+			  <%= f.radio_button :status, "0" %>
+			</div>
 
-<%= f.submit yield(:button_text), class: "btn btn-primary" %>
-<% end %>
+			<div class="modal-footer">
+		   		<%= f.submit yield(:button_text), class: "btn btn-primary" %>
+		 	    <%= link_to "Cancel", "#", class: "btn btn-default", data: {dismiss: "modal"} %>
+			</div>
+			<% end %>
+			</div>
+    </div>
+  </div>

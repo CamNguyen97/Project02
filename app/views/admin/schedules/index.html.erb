@@ -2,34 +2,23 @@
   <li class="breadcrumb-item">
     <%= link_to t("dashboard") %>
   </li>
-  <li class="breadcrumb-item active"><%= t ".shedule" %></li>
-    <%= link_to t("add"),  new_admin_schedule_path, class: "btn btn-primary" %>
+  <li class="breadcrumb-item active"><%= t "menu.schedule" %></li>
+    <%= link_to t("add"),  new_admin_schedule_path, remote: true, class: "btn btn-primary" %>
 </ol>
 <div class="card mb-3">
   <div class="card-body">
     <div class="table-responsive">
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
+        <tr>
           <%= render "headerTable" %>
+        </tr>
         </thead>
         <tbody>
-          <% @schedules.each do |item| %>
-          <tr>
-            <td><%= item.id %></td>
-            <td><%= item.show_case %></td>
-            <td><%= item.date_movie %></td>
-            <td><%= item.status %></td>
-            <td><%= Movie.find_by(id: item.movie_id).name %></td>
-            <td>
-              <%= link_to t("edit"), edit_admin_schedule_path(item), class:"btn btn-info" %>
-              <%= link_to t("delete"), admin_schedules_path(item), class:"btn btn-danger", method: :delete,data: { confirm: 'Are you sure?' } %>
-            </td>
-          </tr>
-          <% end %>
+          <%= render "index" %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-
-
+<div id="product-modal" class="modal fade" role= "dialog"></div>

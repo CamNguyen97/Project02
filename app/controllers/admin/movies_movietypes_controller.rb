@@ -5,8 +5,8 @@ class Admin::MoviesMovietypesController < Admin::ApplicationController
   end
 
   def create
-    @movies_movietypes = MoviesMovietype.new movies_movietype_params
-    if @movies_movietypes.save
+    @movies_movietype = MoviesMovietype.new movies_movietype_params
+    if @movies_movietype.save
        flash[:suscces] = t "suscess"
       redirect_to admin_movies_movietypes_path
     else
@@ -16,7 +16,7 @@ class Admin::MoviesMovietypesController < Admin::ApplicationController
   end
 
   def new
-    @movies_movietypes = MoviesMovietype.new
+    @movies_movietype = MoviesMovietype.new
   end
 
   def edit
@@ -42,7 +42,7 @@ class Admin::MoviesMovietypesController < Admin::ApplicationController
   end
 
   def movies_movietype_read
-    @movies_movietypes = MoviesMovietype.find_by id: params[:id]
+    @movies_movietype = MoviesMovietype.find_by id: params[:id]
   end
 
 end

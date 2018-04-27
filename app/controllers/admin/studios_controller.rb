@@ -1,13 +1,15 @@
 class Admin::StudiosController < Admin::ApplicationController
-  before_action :studio_read, except: %W(index create new)
+  before_action :studio_read, except: %w(index, create, new)
+
+  
   def index
   	@studios = Studio.all
   end
 
   def create
-    @studios = Studio.new studio_params
-    if @studios.save
-       flash[:suscces] = t "suscess"
+    @studio = Studio.new studio_params
+    if @studio.save
+      flash[:suscces] = t "suscess"
       redirect_to admin_studios_path
     else
       flash[:danger] = t "danger"
@@ -16,15 +18,17 @@ class Admin::StudiosController < Admin::ApplicationController
   end
 
   def new
-    @studios = Studio.new
+    @studio = Studio.new
+    @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
   end
 
   def edit
+    @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
   end
 
   def update
-    if @studios.update_attributes studio_params
-      flash[:suscces] = t "suscess"
+    if @studio.update_attributes studio_params
+      # flash[:suscces] = t "suscess"
       redirect_to admin_studios_path
     else
       flash[:danger] = t "danger"
@@ -42,6 +46,6 @@ class Admin::StudiosController < Admin::ApplicationController
   end
 
   def studio_read
-    @studios = Studio.find_by id: params[:id]
+    @studio = Studio.find_by id: params[:id]
   end
 end

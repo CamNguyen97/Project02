@@ -58,7 +58,7 @@ en:
     movie_type: "MovieTypes"
     movie: "Movies"
     studio: "Studios"
-    schedule_time: "Schedule time"
+    schedule_time: "Schedule times"
   Movies:
     name: "Movies"
     year_product: "Product year"

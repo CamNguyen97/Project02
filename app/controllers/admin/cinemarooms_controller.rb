@@ -5,8 +5,8 @@ class Admin::CinemaroomsController < Admin::ApplicationController
   end
 
   def create
-    @cinemarooms = Cinemaroom.new cinemaroom_params
-    if @cinemarooms.save
+    @cinemaroom = Cinemaroom.new cinemaroom_params
+    if @cinemaroom.save
        flash[:suscces] = t "suscess"
       redirect_to admin_cinemarooms_path
     else
@@ -16,7 +16,7 @@ class Admin::CinemaroomsController < Admin::ApplicationController
   end
 
   def new
-    @cinemarooms = Cinemaroom.new
+    @cinemaroom = Cinemaroom.new
     @list_schedule = Schedule.all.map { |lst| [lst.show_case, lst.id] }
   end
 
@@ -25,7 +25,7 @@ class Admin::CinemaroomsController < Admin::ApplicationController
   end
 
   def update
-    if @cinemarooms.update_attributes cinemaroom_params
+    if @cinemaroom.update_attributes cinemaroom_params
       flash[:suscces] = t "suscess"
       redirect_to admin_cinemarooms_path
     else
@@ -45,6 +45,6 @@ class Admin::CinemaroomsController < Admin::ApplicationController
   end
 
   def cinemaroom_read
-    @cinemarooms = Cinemaroom.find_by id: params[:id]
+    @cinemaroom = Cinemaroom.find_by id: params[:id]
   end
 end
