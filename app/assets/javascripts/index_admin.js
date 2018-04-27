@@ -149,7 +149,7 @@ $("#seat_add").click(function(){
     // contentType: 'application/json',
     data:{obj: data },
     success: function(data) {
-      alert("abc");
+      alert("Save success");
    }
 });
 });

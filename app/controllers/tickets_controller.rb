@@ -3,4 +3,7 @@ class TicketsController < ActionController::Base
   layout "ticket"
   def index
   end
+
+  def show
+  end
 end

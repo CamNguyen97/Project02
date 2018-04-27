@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   get "/contact", to: "contacts#index"
   get "/event", to: "events#index"
   get "/booking", to: "tickets#index"
-  
   resources :homes
   resources :searchs
-  resources :schedules
+  resources :tickets
   resources :logins
   
   namespace :admin do

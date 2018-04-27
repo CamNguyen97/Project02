@@ -23,7 +23,7 @@
                                                 <% @schedules.each do |item| %>
                                                    <ul class="products-grid-movie tab-showtime" >
                                                       <li class="item" >
-                                                         <%= link_to "ticket_path(@movie_name)" do %>
+                                                         <%= link_to ticket_path(@movie) do %>
                                                             <span><%= item.cinemaroom.name %></span><br>
                                                             <span><%= item.schedule_time.start_time %></span><br>
                                                             <span><%= @movie.broadcasting_time %></span><br>

@@ -1,17 +1,22 @@
 class Admin::SchedulesController < Admin::ApplicationController
   before_action :schedule_read, except: %W(index create new)
+  before_action :search_duplicates, only: %W(create update)
   def index
-  	@schedules = Schedule.all.where(is_delete: false)
+    @schedules = Schedule.all.where(is_delete: false)
   end
 
   def create
-    @schedule = Schedule.new schedule_params
-    if @schedule.save
-      flash[:success] = t "suscess"
-      redirect_to admin_schedules_path
+    if @schedule_date.empty?
+      if @schedule.save
+        flash[:success] = t "new_suscess"
+        redirect_to admin_schedules_path
+      else
+        flash[:danger] = t "danger"
+        redirect_to admin_schedules_path
+      end
     else
-      flash[:danger] = t "danger"
-      render :new
+      flash[:danger] =  "lich chieu bi trung"
+      redirect_to admin_schedules_path
     end
   end
 
@@ -29,12 +34,17 @@ class Admin::SchedulesController < Admin::ApplicationController
   end
 
   def update
-    if @schedule.update_attributes schedule_params
-      flash[:success] = t "suscess"
-      redirect_to admin_schedules_path
+    if @schedule_date.empty?
+      if @schedule.update_attributes schedule_params
+        flash[:success] = t "update_suscess"
+        redirect_to admin_schedules_path
+      else
+        flash[:danger] = t "danger"
+        redirect_to admin_schedules_path
+      end
     else
-      flash[:danger] = t "danger"
-      render :edit
+      flash[:danger] =  "lich chieu bi trung"
+      redirect_to admin_schedules_path
     end
   end
 
@@ -44,9 +54,8 @@ class Admin::SchedulesController < Admin::ApplicationController
 
   def destroy
      @scheduleTime_d = Schedule.find_by id: params[:id]
-     byebug
      if @scheduleTime_d.update_attributes is_delete:true
-      flash[:success] = t "suscess"
+      flash[:success] = t "delete_suscess"
       redirect_to admin_schedules_path
     else
       flash[:danger] = t "danger"
@@ -67,5 +76,11 @@ class Admin::SchedulesController < Admin::ApplicationController
 
   def schedule_read
     @schedule = Schedule.find_by id: params[:id]
+  end
+
+  def search_duplicates
+    @schedule = Schedule.new schedule_params
+    @schedule_date = Schedule.select("*")
+      .where("schedules.date_movie=? and schedules.schedule_time_id=? and schedules.cinemaroom_id=?", @schedule.date_movie, @schedule.schedule_time_id, @schedule.cinemaroom_id)
   end
 end
