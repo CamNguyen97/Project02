@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :homes
   resources :searchs
   resources :schedules
+  
   namespace :admin do
     resources :homes
     resources :movies
