@@ -17,11 +17,9 @@ class Admin::MoviesController < Admin::ApplicationController
 
   def new
   	@movie = Movie.new
-    @list_studio = Studio.all.map { |lst| [lst.name, lst.id] }
   end
 
   def edit
-  	@list_studio = Studio.all.map { |lst| [lst.name, lst.id] }
   end
   
   def update
@@ -41,7 +39,7 @@ class Admin::MoviesController < Admin::ApplicationController
   private
 
   def movie_params
-  	params.require(:movie).permit :name, :year_produced, :broadcasting_time, :descreption, :trailer, :image, :status, :studio_id
+  	params.require(:movie).permit :name, :year_produced, :broadcasting_time, :descreption, :trailer, :image, :status
   end
 
   def movie_read
