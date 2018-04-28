@@ -9,6 +9,11 @@ class Movie < ApplicationRecord
     .limit Settings.model.movie.num_movie_show
   end
 
+  scope :movie_top3, -> do
+    where(status: :t).order(year_produced: :desc)
+    .limit 3
+  end
+
   def self.search search, id
     if search
       where(["name LIKE ?", "%#{search}%"])

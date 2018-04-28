@@ -3,6 +3,7 @@ class HomesController < ApplicationController
   def index
   	@movies = Movie.movie_select.page(params[:page]).per(4)
     @studios = Studio.sort_alpha
+    @movie_top3 = Movie.movie_top3
   end
 
   def show
