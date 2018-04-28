@@ -54,7 +54,7 @@ en:
     ticket: "Tickets"
     seat: "Seats"
     schedule: "Schedules"
-    cinemaroom: "Cinemarooms"
+    cinemaroom: "cinemarooms"
     movie_type: "MovieTypes"
     movie: "Movies"
     studio: "Studios"
@@ -70,3 +70,11 @@ en:
   Schedule_time:
     start_time: "Begin time"
     end_time: "End time"
+  cinemarooms:
+    name: "Cinemaroom"
+    sum_of_rows: "Sum of rows"
+    sum_of_columns: "Sum of columns"
+    descreption: "Descreption"
+    status: "Status"
+
+
