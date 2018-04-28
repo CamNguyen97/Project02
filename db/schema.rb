@@ -31,11 +31,9 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.string "trailer"
     t.string "image"
     t.boolean "status"
-    t.integer "studio_id"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["studio_id"], name: "index_movies_on_studio_id"
   end
 
   create_table "movies_movietypes", force: :cascade do |t|

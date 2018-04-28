@@ -12,15 +12,18 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :descreption %>
-        <%= f.text_field :descreption ,class: "form-control" %>
+        <%= f.label :sum_of_row %>
+        <%= f.number_field :sum_of_row, min: 1, max: 10, value: 1, class: "form-control" %>
       </div>
 
       <div class="form-group">
-        <%= f.label :schedule_id %>
-         <%= f.select :schedule_id, @list_schedule,
-            {include_blank: "Choose one",selected: @cinemaroom.schedule_id},
-            {class: "form-control"} %>
+        <%= f.label :sum_of_collum %>
+        <%= f.number_field :sum_of_collum, min: 1, max: 10, value: 1, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :descreption %>
+        <%= f.text_field :descreption, class: "form-control" %>
       </div>
 
       <%= f.label :status %>

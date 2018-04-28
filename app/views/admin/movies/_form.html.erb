@@ -39,13 +39,6 @@
           <%= f.file_field :image, {action: :upload} %>
         </div>
 
-        <div class="form-group">
-          <%= label :studio_id, t("Movies.studio_id") %>
-          <%= f.select :studio_id, @list_studio,
-            {include_blank: "Choose one",selected: @movie.studio_id},
-            {class: "form-control"} %>
-        </div>
-
         <%= f.label :status %>
         <div class="form-group">
           <%= label :status, t("action") %>

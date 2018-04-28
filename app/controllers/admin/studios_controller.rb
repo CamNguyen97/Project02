@@ -42,7 +42,7 @@ class Admin::StudiosController < Admin::ApplicationController
   private
 
   def studio_params
-  	params.require(:studio).permit :name, :status
+  	params.require(:studio).permit :name, :status, :movie_id
   end
 
   def studio_read

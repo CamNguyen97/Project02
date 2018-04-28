@@ -1,14 +1,13 @@
  <% @movies.each_with_index do |item, index| %>
     <tr>
-        <td><%= Index index %></td>
+        <td class="text-center" ><%= Index index %></td>
         <td><%= item.name %></td>
-        <td><%= item.year_produced %></td>
-        <td><%= item.broadcasting_time %></td>
-        <td><%= item.descreption %></td>
-        <td><%= link_to item.trailer, item.trailer, target: "_blank" %></td>
-        <td><%= image_tag item.image,  size: "100x50" %></td>
-        <td><%= Studio.find_by(id: item.studio_id).name %></td>
-        <td><%= item.status %></td>
+        <td class="text-center" ><%= item.year_produced %></td>
+        <td class="number" ><%= item.broadcasting_time %></td>
+        <td class="text-left" ><%= item.descreption %></td>
+        <td class="text-left" ><%= link_to item.trailer, item.trailer, target: "_blank" %></td>
+        <td class="text-center"><%= image_tag item.image,  size: "100x50" %></td>
+        <td class="text-center"><%= item.status %></td>
         <td>
        <%= link_to t("edit"), edit_admin_movie_path(item), remote: true, class:"btn btn-info" %>
     <%= link_to t("delete"), admin_movie_delete_path(item), remote: true, class:"btn btn-danger" %>
