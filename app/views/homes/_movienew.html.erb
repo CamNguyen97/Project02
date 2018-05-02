@@ -3,7 +3,7 @@
   <% @movies.each do |movie| %>
     <div class="content-left">
       <div class="listimg listimg_1_of_2">
-        <%= link_to image_tag("pic.jpg", alt: ""), home_path(movie) %>
+        <%= link_to image_tag("#{movie.image}", alt: ""), home_path(movie) %>
       </div>
       <div class="text list_1_of_2">
         <div class="extra-wrap">
@@ -12,7 +12,7 @@
               <strong><%= movie.name %></strong>
             <% end %>
           </h1>
-          <%= movie.year_produced %>
+          <%= movie.year_produced.strftime("%d/%m/%Y") %>
           <br>
           <span class="text-top"><%= movie.descreption %></span>
         </div>

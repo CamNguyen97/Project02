@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :homes
   resources :searchs
   resources :schedules
+  resources :logins
   
   namespace :admin do
     resources :homes do
@@ -40,5 +41,5 @@ Rails.application.routes.draw do
     resources :schedule_times do
       get "delete"
     end
-   end
+  end
 end

@@ -6,40 +6,53 @@
           <h3><%= t "last_movie" %></h3>
           <div class="about-top">
             <div class="grid images_3_of_2">
-              <%= link_to image_tag("pic13.jpg", alt: "", class: "col"), "#" %>
+              <%= link_to image_tag("#{@movie.image}", alt: "", class: "col-img") %>
             </div>
             <div class="desc span_3_of_2">
               <h4><%= @movie.name %></h4>
-              <p><%= t "produce_year" %><%= @movie.year_produced %></p>
-              <p><%= t "broadcasing_time" %><%= @movie.broadcasting_time %>
+              <p><%= t "produce_year" %><%= @movie.year_produced.strftime("%d/%m/%Y") %></p>
+              <% @movie_type.each do |item| %>
+                <p><%= t "movie_type" %> <%= item.movietype.name %></p>
+              <% end %>
+              <p>
+                <%= t "broadcasing_time" %><%= @movie.broadcasting_time %>
                 <%= t "minute" %>
               </p>
-              <p><%= t "trailer" %><%= @movie.trailer %>
-              </p>
               <p><%= @movie.descreption %></p>
-              <%= link_to t("watch"), " @movie.trailer ", class: "watch_but" %>
-              <%= link_to t("booking_ticket"), schedule_path(@movie), class: "booking-ticket" %>
+              <%= link_to t("watch"), "#{@movie.trailer}", class: "watch_but" %>
+              <%= button_tag t("booking-ticket"), :onclick => "document.getElementById('id02').style.display='block'", class: "booking-ticket" %>
             </div>
             <div class="clear"></div>
+            <div class="type-with-movie">
+              <h3><%= t "type_with_movie" %></h3>
+              <div class="type-with-movie-div">
+                <% @movie_lq.each do |movielq| %>
+                  <div>
+                    <%= link_to image_tag("#{movielq.movie.image}", alt: "", class: "type-with-movie-image"), home_path(movielq) %>
+                    <p class="type-with-movie-p"><%= movielq.movie.name %></p>
+                    <div class="clear"></div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
           </div>
-          <%= link_to t("more_movie"), "#", class: "watch_but" %>
         </div>
         <div class="rightsidebar span_3_of_1">
           <h3><%= t "most_premieres" %></h3>
-          <div class="small_box premier">
-            <%= link_to image_tag("pic15.jpg", alt: "", class: "col"), "#" %>
-            <div class="clear"></div>
-          </div>
-          <h3><%= t "last_new" %></h3>
-          <ul class="latest_news">
-            <li>
-              <span class="date"><%= t "time" %></span><br>
-              <%= link_to t("lorem"), "#", class: "button" %>
-            </li>
-          </ul>
+          <% @movie_top3.each do |movie| %>
+            <div class="small_box premier">
+              <%= link_to image_tag("#{movie.image}", alt: "", class: "col-top3-image"), home_path(movie) %>
+              <div class="clear"></div>
+            </div>
+          <% end %>
         </div>
       </div>
       <div class="clear"></div>
     </div>
   </div>
+</div>
+<div id="id02" class="modal">
+  <span onclick="document.getElementById('id02').style.display='none'" 
+    class="close" title="Close Modal">&times;</span>
+  <%= render "homes/schedule"%>
 </div>
