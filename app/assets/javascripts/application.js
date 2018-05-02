@@ -1,3 +1,4 @@
+//= require login-popup
 //= require modernizr
 //= require jquery.min
 //= require jquery.flexslider

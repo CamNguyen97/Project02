@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180425145950) do
+ActiveRecord::Schema.define(version: 20180502141102) do
 
   create_table "cinemarooms", force: :cascade do |t|
     t.string "name"
@@ -31,9 +31,11 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.string "trailer"
     t.string "image"
     t.boolean "status"
+    t.integer "studio_id"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["studio_id"], name: "index_movies_on_studio_id"
   end
 
   create_table "movies_movietypes", force: :cascade do |t|
@@ -87,20 +89,20 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.string "num_of_row"
     t.integer "num_of_collum"
     t.boolean "status"
+    t.integer "cinemaroom_id"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cinemaroom_id"], name: "index_seats_on_cinemaroom_id"
     t.index ["seat_type_id"], name: "index_seats_on_seat_type_id"
   end
 
   create_table "studios", force: :cascade do |t|
     t.string "name"
     t.boolean "status"
-    t.integer "movie_id"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_studios_on_movie_id"
   end
 
   create_table "tickets", force: :cascade do |t|
@@ -129,6 +131,17 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "encrypted_password"
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer "sign_in_count", default: 0, null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string "current_sign_in_ip"
+    t.string "last_sign_in_ip"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
 end
