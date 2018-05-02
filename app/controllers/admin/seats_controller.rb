@@ -1,17 +1,19 @@
 class Admin::SeatsController < Admin::ApplicationController
+  require 'json'
   before_action :seat_read, except: %W(index create new)
   def index
-  	@seats = Seat.all
+    @page_type = Cinemaroom.all.collect{ |u| [u.name, u.id]}
+  	@seat_type = SeatType.all.collect{ |u| [u.name, u.id]}
   end
 
   def create
-    @seat = Seat.new seat_params
-    if @seat.save
-       flash[:suscces] = t "suscess"
-      redirect_to admin_seats_path
-    else
-      flash[:danger] = t "danger"
-      render :new
+    a = JSON.parse(params[:obj])
+    b = a.to_json
+    object = JSON.parse(b, object_class: Seat)
+    Seat.transaction do
+      object.each do |attrs|
+          Seat.create num_of_row: attrs.num_of_row, num_of_collum: attrs.num_of_collum, status: attrs.status,seat_type_id: attrs.seat_type_id
+      end
     end
   end
 
@@ -26,10 +28,10 @@ class Admin::SeatsController < Admin::ApplicationController
 
   def update
     if @seat.update_attributes seat_params
-      flash[:suscces] = t "suscess"
+      # flash[:suscces] = t "suscess"
       redirect_to admin_seats_path
     else
-      flash[:danger] = t "danger"
+      # flash[:danger] = t "danger"
       render :edit
     end
   end
@@ -37,11 +39,17 @@ class Admin::SeatsController < Admin::ApplicationController
   def destroy
   end
 
+  def cinemaroom_getdata
+    @cinemaroom = Cinemaroom.find_by id: params[:seat_id]
+    render json: @cinemaroom
+  end
+
   private
 
   def seat_params
   	params.require(:seat).permit :num_of_row, :num_of_collum, 
-      :seat_type, :cinemaroom_id, :status
+      :seat_type_id, :status
+      byebug
   end
 
   def seat_read

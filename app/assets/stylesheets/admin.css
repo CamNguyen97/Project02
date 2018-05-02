@@ -14,3 +14,33 @@
  .text-left{
  	text-align: left;
  }
+ .col-seat{
+ 	float:left;
+ 	/*padding:0px 110px 50px 0px;*/
+ 	width:30px;
+ 	height:25px;
+ 	margin: 0px 20px;
+ 	text-align: center;
+ }
+ .default-seat{
+ 	color: black;
+ 	border-color: black;
+ 	background: #fff;
+ }
+ .seat{
+	border: 1px solid gray;
+ }
+ .seat-checked-vip {
+    color: #b11500 !important;
+    border-color: #b11500 !important;
+}
+ .seat-checked {
+    /*background: #b11500;*/
+    color: #01c73c !important;
+    border-color: #01c73c !important;
+}
+.unactive{
+	background: gray !important;
+	color: #fff !important;
+    border-color: gray !important;
+}

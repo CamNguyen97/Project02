@@ -2,25 +2,31 @@
   <li class="breadcrumb-item">
     <%= link_to t("dashboard") %>
   </li>
-  <li class="breadcrumb-item active"><%= t "menu.movie" %></li>
-     <%= link_to t("add"),  new_admin_seat_path, remote: true, class: "btn btn-primary" %>
+  <li class="breadcrumb-item active"><%= t ".seat" %></li>
 </ol>
+<div class="container">
+  <div class="col-sm-4">
+        <%= label_tag t "menu.cinemaroom" %>
+        <%= select_tag "cinemaroom", options_for_select(@page_type),{include_blank: "Choose one", class:"form-control"} %>
+  </div>
+   <div class="col-sm-4">
+        <%= label_tag "Seat type" %>
+        <%= select_tag "Seat type", options_for_select(@seat_type),{include_blank: "Choose one", class:"form-control"} %>
+  </div>
+  <div class="col-sm-4">
+        <%= label_tag t "status" %>
+        <%= select_tag "status", options_for_select(([["active", "1"], ["Unactive", "0"]])),{include_blank: "Choose one", class:"form-control"} %>
+  </div>
+</div>
 <div class="card mb-3">
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-        <thead>
-        <tr>
-          <%= render "headerTable" %>
-        </tr>
-        </thead>
-        <tbody>
-          <%= render "index" %>
-        </tbody>
-      </table>
+      <div class="content-seat container" style="padding-top: 100px;"></div>
+      <%= button_tag type: :button, class: "btn btn-primary", id:"seat_add" do %>
+        <%= t("save_change")%>
+      <% end %>
     </div>
   </div>
 </div>
-<div id="product-modal" class="modal fade" role= "dialog"></div>
 
 

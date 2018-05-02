@@ -9,12 +9,15 @@ class Admin::StudiosController < Admin::ApplicationController
   def create
     @studio = Studio.new studio_params
     if @studio.save
-      flash[:suscces] = t "suscess"
+      # flash[:suscces] = t "suscess"
       redirect_to admin_studios_path
     else
-      flash[:danger] = t "danger"
+      # flash[:danger] = t "danger"
       render :new
     end
+     respond_to do |format|
+       format.js
+     end
   end
 
   def new
@@ -31,7 +34,7 @@ class Admin::StudiosController < Admin::ApplicationController
       # flash[:suscces] = t "suscess"
       redirect_to admin_studios_path
     else
-      flash[:danger] = t "danger"
+      # flash[:danger] = t "danger"
       render :edit
     end
   end

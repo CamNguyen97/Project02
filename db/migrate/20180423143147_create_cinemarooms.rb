@@ -6,7 +6,7 @@ class CreateCinemarooms < ActiveRecord::Migration[5.1]
       t.boolean :status
       t.integer :sum_of_row
       t.integer :sum_of_collum
-      t.boolean :is_delete
+      t.boolean :is_delete, default: false
 
       t.timestamps
     end

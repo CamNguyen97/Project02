@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     end
     resources :seats do
       get "delete"
+      get "seatGet", action: "cinemaroom_getdata"
     end
     resources :users do
       get "delete"

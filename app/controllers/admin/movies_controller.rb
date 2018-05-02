@@ -7,10 +7,10 @@ class Admin::MoviesController < Admin::ApplicationController
   def create
   	@movie = Movie.new movie_params
     if @movie.save
-       flash[:suscces] = t "suscess"
+      # flash[:suscces] = t "suscess"
       redirect_to admin_movies_path
     else
-      flash[:danger] = t "danger"
+      # flash[:danger] = t "danger"
       render :new
     end
   end
@@ -24,10 +24,10 @@ class Admin::MoviesController < Admin::ApplicationController
   
   def update
   	if @movie.update_attributes movie_params
-      flash[:suscces] = t "suscess"
+      # flash[:suscces] = t "suscess"
       redirect_to admin_movies_path
     else
-      flash[:danger] = t "danger"
+      # flash[:danger] = t "danger"
       render :edit
     end
   end

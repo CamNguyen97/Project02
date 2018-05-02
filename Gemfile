@@ -28,6 +28,7 @@ gem "mini_magick", "4.7.0"
 gem "fog", "1.42"
 gem "figaro"
 gem "unf"
+gem "jquery-turbolinks"
 
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]

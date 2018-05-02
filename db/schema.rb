@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.boolean "status"
     t.integer "sum_of_row"
     t.integer "sum_of_collum"
-    t.boolean "is_delete"
+    t.boolean "is_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -78,6 +78,7 @@ ActiveRecord::Schema.define(version: 20180425145950) do
 
   create_table "seat_types", force: :cascade do |t|
     t.integer "pay_ticket"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
