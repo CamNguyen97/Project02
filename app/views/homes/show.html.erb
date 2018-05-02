@@ -42,6 +42,10 @@
           <% @movie_top3.each do |movie| %>
             <div class="small_box premier">
               <%= link_to image_tag("#{movie.image}", alt: "", class: "col-top3-image"), home_path(movie) %>
+            <div class="div-top3-infor">
+                <%= movie.name %>
+                <%= link_to t("watch"), "#{movie.trailer}", class: "watch_but" %>
+              </div>
               <div class="clear"></div>
             </div>
           <% end %>
