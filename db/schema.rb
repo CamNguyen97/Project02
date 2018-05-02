@@ -88,9 +88,11 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.string "num_of_row"
     t.integer "num_of_collum"
     t.boolean "status"
+    t.integer "cinemaroom_id"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["cinemaroom_id"], name: "index_seats_on_cinemaroom_id"
     t.index ["seat_type_id"], name: "index_seats_on_seat_type_id"
   end
 
