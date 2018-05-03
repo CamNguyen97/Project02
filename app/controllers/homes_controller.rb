@@ -7,11 +7,11 @@ class HomesController < ApplicationController
   end
 
   def show
-    @schedules = Schedule.joins(:schedule_time, :cinemaroom)
+    @schedules = Schedule.join_cinemaroom_schedule_time
       .where("schedules.movie_id=?", params[:id])
-    @movie_type = MoviesMovietype.joins(:movie, :movietype).where("movies.id=?", params[:id])
+    @movie_type = MoviesMovietype.join_movie_movietype.where("movies.id=?", params[:id])
     @movie_type_id = MoviesMovietype.find_by(id: @movie_type.ids)
-    @movie_lq = MoviesMovietype.joins(:movie, :movietype)
+    @movie_lq = MoviesMovietype.join_movie_movietype
       .where("movietypes.id=? and movies.id!=?", @movie_type_id.movietype_id, params[:id])
       .limit 5
   end

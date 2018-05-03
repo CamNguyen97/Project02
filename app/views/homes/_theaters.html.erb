@@ -1,10 +1,8 @@
 <div class="listview_1_of_3">
   <h3> <%= t "film studio" %></h3>
   <% @studios.each do |studio| %>
-    <div class="content-left">
-      <div class="listimg listimg_1_of_2">
-        <%= link_to image_tag("pic9.jpg", alt: ""), "" %>
-      </div>
+    <div class="content-left content-studio">
+      <%= image_tag "logo_studio.png", alt: "", class: "img_studio" %>
       <div class="text list_1_of_2">
         <div class="extra-wrap">
           <%= link_to studio.studio.name, "", class: "link4" %><br>
