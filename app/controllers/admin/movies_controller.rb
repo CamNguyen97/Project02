@@ -18,7 +18,6 @@ class Admin::MoviesController < Admin::ApplicationController
   def new
   	@movie = Movie.new
     @list_studio = Studio.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
-
   end
 
   def edit
