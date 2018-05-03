@@ -31,9 +31,11 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.string "trailer"
     t.string "image"
     t.boolean "status"
+    t.integer "studio_id"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["studio_id"], name: "index_movies_on_studio_id"
   end
 
   create_table "movies_movietypes", force: :cascade do |t|
@@ -99,11 +101,9 @@ ActiveRecord::Schema.define(version: 20180425145950) do
   create_table "studios", force: :cascade do |t|
     t.string "name"
     t.boolean "status"
-    t.integer "movie_id"
     t.boolean "is_delete"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movie_id"], name: "index_studios_on_movie_id"
   end
 
   create_table "tickets", force: :cascade do |t|
