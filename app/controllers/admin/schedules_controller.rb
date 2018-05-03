@@ -7,10 +7,10 @@ class Admin::SchedulesController < Admin::ApplicationController
   def create
     @schedule = Schedule.new schedule_params
     if @schedule.save
-      # flash[:suscces] = t "suscess"
+      flash[:success] = t "suscess"
       redirect_to admin_schedules_path
     else
-      # flash[:danger] = t "danger"
+      flash[:danger] = t "danger"
       render :new
     end
   end
@@ -30,10 +30,10 @@ class Admin::SchedulesController < Admin::ApplicationController
 
   def update
     if @schedule.update_attributes schedule_params
-      # flash[:suscces] = t "suscess"
+      flash[:success] = t "suscess"
       redirect_to admin_schedules_path
     else
-      # flash[:danger] = t "danger"
+      flash[:danger] = t "danger"
       render :edit
     end
   end
@@ -46,10 +46,10 @@ class Admin::SchedulesController < Admin::ApplicationController
      @scheduleTime_d = Schedule.find_by id: params[:id]
      byebug
      if @scheduleTime_d.update_attributes is_delete:true
-      # flash[:suscces] = t "suscess"
+      flash[:success] = t "suscess"
       redirect_to admin_schedules_path
     else
-      # flash[:danger] = t "danger"
+      flash[:danger] = t "danger"
       render :edit
     end
   end

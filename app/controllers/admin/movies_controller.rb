@@ -7,27 +7,30 @@ class Admin::MoviesController < Admin::ApplicationController
   def create
   	@movie = Movie.new movie_params
     if @movie.save
-      # flash[:suscces] = t "suscess"
+      flash[:success] = t "suscess"
       redirect_to admin_movies_path
     else
-      # flash[:danger] = t "danger"
+      flash[:danger] = t "danger"
       render :new
     end
   end
 
   def new
   	@movie = Movie.new
+    @list_studio = Studio.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
+
   end
 
   def edit
+    @list_studio = Studio.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
   end
   
   def update
   	if @movie.update_attributes movie_params
-      # flash[:suscces] = t "suscess"
+      flash[:success] = t "suscess"
       redirect_to admin_movies_path
     else
-      # flash[:danger] = t "danger"
+      flash[:danger] = t "danger"
       render :edit
     end
   end
@@ -39,10 +42,10 @@ class Admin::MoviesController < Admin::ApplicationController
   def destroy
      @movie_d = Movie.find_by id: params[:id]
      if @movie_d.update_attributes is_delete:true
-      # flash[:suscces] = t "suscess"
+     flash[:success] = t "suscess"
       redirect_to admin_movies_path
     else
-      # flash[:danger] = t "danger"
+      flash[:danger] = t "danger"
       render :edit
     end
   end
@@ -51,7 +54,7 @@ class Admin::MoviesController < Admin::ApplicationController
   private
 
   def movie_params
-  	params.require(:movie).permit :name, :year_produced, :broadcasting_time, :descreption, :trailer, :image, :status
+  	params.require(:movie).permit :name, :year_produced, :broadcasting_time, :descreption, :trailer, :image, :status, :studio_id
   end
 
   def movie_read

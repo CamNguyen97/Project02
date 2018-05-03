@@ -28,10 +28,10 @@ class Admin::SeatsController < Admin::ApplicationController
 
   def update
     if @seat.update_attributes seat_params
-      # flash[:suscces] = t "suscess"
+      flash[:success] = t "suscess"
       redirect_to admin_seats_path
     else
-      # flash[:danger] = t "danger"
+      flash[:danger] = t "danger"
       render :edit
     end
   end

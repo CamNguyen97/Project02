@@ -153,3 +153,9 @@ $("#seat_add").click(function(){
    }
 });
 });
+
+$(document).ready(function(){
+  setTimeout(function(){
+    $('.alert').remove();
+  }, 2000);
+ })

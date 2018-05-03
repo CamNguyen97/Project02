@@ -9,10 +9,10 @@ class Admin::StudiosController < Admin::ApplicationController
   def create
     @studio = Studio.new studio_params
     if @studio.save
-      # flash[:suscces] = t "suscess"
+      flash[:success] = t "suscess"
       redirect_to admin_studios_path
     else
-      # flash[:danger] = t "danger"
+      flash[:danger] = t "danger"
       render :new
     end
      respond_to do |format|
@@ -22,19 +22,17 @@ class Admin::StudiosController < Admin::ApplicationController
 
   def new
     @studio = Studio.new
-    @list_movie = Movie.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
   end
 
   def edit
-    @list_movie = Movie.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
   end
 
   def update
     if @studio.update_attributes studio_params
-      # flash[:suscces] = t "suscess"
+      flash[:success] = t "suscess"
       redirect_to admin_studios_path
     else
-      # flash[:danger] = t "danger"
+      flash[:danger] = t "danger"
       render :edit
     end
   end
@@ -46,10 +44,10 @@ class Admin::StudiosController < Admin::ApplicationController
   def destroy
     @studio_des = Studio.find_by id: params[:id]
     if @studio_des.update_attributes is_delete:true
-      # flash[:suscces] = t "suscess"
+      flash[:success] = t "suscess"
       redirect_to admin_studios_path
     else
-      # flash[:danger] = t "danger"
+      flash[:danger] = t "danger"
       render :edit
     end
   end
@@ -57,7 +55,7 @@ class Admin::StudiosController < Admin::ApplicationController
   private
 
   def studio_params
-  	params.require(:studio).permit :name, :status, :movie_id
+  	params.require(:studio).permit :name, :status
   end
 
   def studio_read
