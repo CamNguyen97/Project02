@@ -12,7 +12,7 @@ class Admin::SeatsController < Admin::ApplicationController
     object = JSON.parse(b, object_class: Seat)
     Seat.transaction do
       object.each do |attrs|
-          Seat.create num_of_row: attrs.num_of_row, num_of_collum: attrs.num_of_collum, status: attrs.status,seat_type_id: attrs.seat_type_id
+          Seat.create num_of_row: attrs.num_of_row, num_of_collum: attrs.num_of_collum, status: attrs.status,seat_type_id: attrs.seat_type_id, cinemaroom_id: attrs.cinemaroom_id
       end
     end
   end
@@ -41,7 +41,20 @@ class Admin::SeatsController < Admin::ApplicationController
 
   def cinemaroom_getdata
     @cinemaroom = Cinemaroom.find_by id: params[:seat_id]
-    render json: @cinemaroom
+    @seat = Seat.find_by cinemaroom_id: params[:seat_id]
+    @h = Hash.new
+    if @seat.present?
+      @h[:sum_of_row] = @cinemaroom.sum_of_row
+      @h[:sum_of_collum] = @cinemaroom.sum_of_collum
+      @h[:seat] = true
+      @h[:seats] = Seat.where(cinemaroom_id: params[:seat_id]).all
+      render json: @h
+    else
+      @h[:sum_of_row] = @cinemaroom.sum_of_row
+      @h[:sum_of_collum] = @cinemaroom.sum_of_collum
+      @h[:seat] = false
+      render json: @h
+    end
   end
 
   private
