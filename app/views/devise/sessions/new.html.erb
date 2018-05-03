@@ -1,0 +1,26 @@
+<%= form_for resource, as: resource_name, url: session_path(resource_name), html:{class: "modal1-content animate"} do |f| %>
+  <h1 class="title-h1">Login</h1>
+  <%= devise_error_messages! %>
+  <div class="imgcontainer">
+    <%= image_tag "img_avatar2.png", alt: "Avatar", class: "avatar" %>
+  </div>
+  <%= f.label :email, class: "txt" %><br />
+  <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "input-text" %>
+  <br>
+  <%= f.label :password, class: "txt" %><br />
+  <%= f.password_field :password, autocomplete: "off", class: "input-text" %>
+
+  <% if devise_mapping.rememberable? -%>
+    <div class="checkbox">
+      <%= f.check_box :remember_me %>
+      <%= f.label :remember_me %>
+    </div>
+  <% end -%>
+
+  <div class="btn-event-login">
+    <%= f.submit "Log in", class: "button-signup" %>
+    <br>
+    <%= render "devise/shared/links" %>
+  </div>
+<% end %>
+

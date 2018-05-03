@@ -8,10 +8,21 @@
         <ul class="group" id="example-one">
           <li class="current_page_item"><%= link_to t("home"), root_path %></li>
           <li><%= link_to t("event"), event_path %></li>
-          <li><%= link_to t("contact"), contact_path %></li>
-          <li><%= button_tag t("login"), :onclick => "document.getElementById('id01').style.display='block'" %></li>
-          <li><%= link_to t("english"), locale:"en" %></li>
-          <li><%= link_to t("vietnam"), locale:"vi" %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to t("logout"), destroy_user_session_path, :method => "delete" %></li>
+          <% else %>
+            <li><%= link_to t("login"), new_user_session_path %></li>
+          <% end %>
+          <li class="language_li">
+              <%= link_to locale:"en" do %>
+                <%= image_tag "united-kingdom.png", class: "language_flag_right" %>
+              <% end %>
+              <p style="margin-top: 5px; color: white;">|</p>
+              <%= link_to locale:"vi" do %>
+                <%= image_tag "vietnam.png", class: "language_flag_left" %>
+              <% end %>
+            <p>
+          </li>
         </ul>
       </div>
       <div class="clear"></div>
@@ -30,7 +41,7 @@
             <%= label_tag t "find_movie" %>
             <%= form_tag searchs_path, :method => "get"  do %>
               <%= text_field_tag :search, params[:search]%>
-              <%= submit_tag "Search", :name => nil  %>
+              <%= submit_tag "Search", :name => nil %>
             <% end %>
           </div>
         </fieldset>
@@ -38,31 +49,4 @@
       <div class="clear"></div>
     </div>
   </div>
-</div>
-<div id="id01" class="modal">
-  <span onclick="document.getElementById('id01').style.display='none'" 
-class="close" title="Close Modal">&times;</span><!-- Modal Content -->
-  <form class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <img src="img_avatar2.png" alt="Avatar" class="avatar">
-    </div>
-
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="uname" required>
-
-      <label for="psw"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="psw" required>
-
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
 </div>
