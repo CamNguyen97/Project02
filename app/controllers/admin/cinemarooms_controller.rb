@@ -1,7 +1,7 @@
 class Admin::CinemaroomsController < Admin::ApplicationController
   before_action :cinemaroom_read, except: %W(index create new)
   def index
-  	@cinemarooms = Cinemaroom.all
+  	@cinemarooms = Cinemaroom.all.where(is_delete: false)
   end
 
   def create
@@ -33,8 +33,21 @@ class Admin::CinemaroomsController < Admin::ApplicationController
     end
   end
 
-  def destroy
+  def delete
+     @cinemaroom_d = Cinemaroom.find_by id: params[:cinemaroom_id]
   end
+
+  def destroy
+     @cinemaroom_d = Cinemaroom.find_by id: params[:id]
+     if @cinemaroom_d.update_attributes is_delete:true
+      # flash[:suscces] = t "suscess"
+      redirect_to admin_cinemarooms_path
+    else
+      # flash[:danger] = t "danger"
+      render :edit
+    end
+  end
+
 
   private
 

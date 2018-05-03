@@ -1,7 +1,7 @@
 class Admin::MoviesController < Admin::ApplicationController
 	before_action :movie_read, except: %W(index create new)
   def index
-  	@movies = Movie.all
+  	@movies = Movie.all.where(is_delete: false)
   end
 
   def create
@@ -32,9 +32,21 @@ class Admin::MoviesController < Admin::ApplicationController
     end
   end
 
-  def destroy
-  	
+  def delete
+     @movie_d = Movie.find_by id: params[:movie_id]
   end
+
+  def destroy
+     @movie_d = Movie.find_by id: params[:id]
+     if @movie_d.update_attributes is_delete:true
+      # flash[:suscces] = t "suscess"
+      redirect_to admin_movies_path
+    else
+      # flash[:danger] = t "danger"
+      render :edit
+    end
+  end
+
 
   private
 

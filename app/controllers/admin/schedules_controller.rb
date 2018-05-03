@@ -1,7 +1,7 @@
 class Admin::SchedulesController < Admin::ApplicationController
   before_action :schedule_read, except: %W(index create new)
   def index
-  	@schedules = Schedule.all
+  	@schedules = Schedule.all.where(is_delete: false)
   end
 
   def create
@@ -17,15 +17,15 @@ class Admin::SchedulesController < Admin::ApplicationController
 
   def new
     @schedule = Schedule.new
-    @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
-    @list_cinemaroom = Cinemaroom.all.map { |lst| [lst.name, lst.id] }
-    @list_schedule_time = ScheduleTime.all.map { |lst| [lst.id, lst.id] }
+    @list_movie = Movie.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
+    @list_cinemaroom = Cinemaroom.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
+    @list_schedule_time = ScheduleTime.all.where(is_delete: false).map { |lst| [lst.id, lst.id] }
   end
 
   def edit
-    @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
-    @list_cinemaroom = Cinemaroom.all.map { |lst| [lst.name, lst.id] }
-    @list_schedule_time = ScheduleTime.all.map { |lst| [lst.id, lst.id] }
+    @list_movie = Movie.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
+    @list_cinemaroom = Cinemaroom.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
+    @list_schedule_time = ScheduleTime.all.where(is_delete: false).map { |lst| [lst.id, lst.id] }
   end
 
   def update
@@ -38,7 +38,20 @@ class Admin::SchedulesController < Admin::ApplicationController
     end
   end
 
+  def delete
+     @scheduleTime_d = Schedule.find_by id: params[:schedule_id]
+  end
+
   def destroy
+     @scheduleTime_d = Schedule.find_by id: params[:id]
+     byebug
+     if @scheduleTime_d.update_attributes is_delete:true
+      # flash[:suscces] = t "suscess"
+      redirect_to admin_schedules_path
+    else
+      # flash[:danger] = t "danger"
+      render :edit
+    end
   end
 
   def getdataTime

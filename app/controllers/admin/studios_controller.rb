@@ -3,7 +3,7 @@ class Admin::StudiosController < Admin::ApplicationController
 
   
   def index
-  	@studios = Studio.all
+  	@studios = Studio.all.where(is_delete: false)
   end
 
   def create
@@ -22,11 +22,11 @@ class Admin::StudiosController < Admin::ApplicationController
 
   def new
     @studio = Studio.new
-    @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
+    @list_movie = Movie.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
   end
 
   def edit
-    @list_movie = Movie.all.map { |lst| [lst.name, lst.id] }
+    @list_movie = Movie.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
   end
 
   def update
@@ -39,7 +39,19 @@ class Admin::StudiosController < Admin::ApplicationController
     end
   end
 
+  def delete
+    @studio_d = Studio.find_by id: params[:studio_id]
+  end
+
   def destroy
+    @studio_des = Studio.find_by id: params[:id]
+    if @studio_des.update_attributes is_delete:true
+      # flash[:suscces] = t "suscess"
+      redirect_to admin_studios_path
+    else
+      # flash[:danger] = t "danger"
+      render :edit
+    end
   end
 
   private

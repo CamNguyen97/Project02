@@ -1,7 +1,7 @@
 class Admin::MoviesMovietypesController < Admin::ApplicationController
   before_action :movies_movietype_read, except: %W(index create new)
   def index
-  	@movies_movietypes = MoviesMovietype.all
+  	@movies_movietypes = MoviesMovietype.all.where(is_delete: false)
   end
 
   def create
@@ -32,8 +32,21 @@ class Admin::MoviesMovietypesController < Admin::ApplicationController
     end
   end
 
-  def destroy
+  def delete
+     @scheduleTime_d = ScheduleTime.find_by id: params[:schedule_id]
   end
+
+  def destroy
+     @scheduleTime_d = ScheduleTime.find_by id: params[:schedule_id]
+     if @scheduleTime_d.update_attributes is_delete:true
+      # flash[:suscces] = t "suscess"
+      redirect_to admin_movies_movietypes_path
+    else
+      # flash[:danger] = t "danger"
+      render :edit
+    end
+  end
+
 
   private
 

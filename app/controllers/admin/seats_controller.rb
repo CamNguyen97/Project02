@@ -2,7 +2,7 @@ class Admin::SeatsController < Admin::ApplicationController
   require 'json'
   before_action :seat_read, except: %W(index create new)
   def index
-    @page_type = Cinemaroom.all.collect{ |u| [u.name, u.id]}
+    @page_type = Cinemaroom.all.where(is_delete: false).collect{ |u| [u.name, u.id]}
   	@seat_type = SeatType.all.collect{ |u| [u.name, u.id]}
   end
 
@@ -19,11 +19,11 @@ class Admin::SeatsController < Admin::ApplicationController
 
   def new
     @seat = Seat.new
-    @list_cinemaroom = Cinemaroom.all.map { |lst| [lst.name, lst.id] }
+    @list_cinemaroom = Cinemaroom.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
   end
 
   def edit
-    @list_cinemaroom = Cinemaroom.all.map { |lst| [lst.name, lst.id] }
+    @list_cinemaroom = Cinemaroom.all.where(is_delete: false).map { |lst| [lst.name, lst.id] }
   end
 
   def update
@@ -62,7 +62,6 @@ class Admin::SeatsController < Admin::ApplicationController
   def seat_params
   	params.require(:seat).permit :num_of_row, :num_of_collum, 
       :seat_type_id, :status
-      byebug
   end
 
   def seat_read
