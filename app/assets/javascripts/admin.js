@@ -4,6 +4,7 @@
 //= require jquery.dataTables.min
 //= require dataTables.bootstrap.min
 //= require dataTables.responsive
+//= require turbolinks
 //= require rails-ujs
 //= require sb-admin-2
 

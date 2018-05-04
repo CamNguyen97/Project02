@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.boolean "status"
     t.integer "sum_of_row"
     t.integer "sum_of_collum"
-    t.boolean "is_delete"
+    t.boolean "is_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -31,7 +31,8 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.string "trailer"
     t.string "image"
     t.boolean "status"
-    t.boolean "is_delete"
+    t.integer "studio_id"
+    t.boolean "is_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -48,7 +49,7 @@ ActiveRecord::Schema.define(version: 20180425145950) do
   create_table "movietypes", force: :cascade do |t|
     t.string "name"
     t.boolean "status"
-    t.boolean "is_delete"
+    t.boolean "is_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -57,7 +58,7 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.string "start_time"
     t.string "end_time"
     t.boolean "status"
-    t.boolean "is_delete"
+    t.boolean "is_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -68,7 +69,7 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.boolean "status"
     t.integer "movie_id"
     t.integer "cinemaroom_id"
-    t.boolean "is_delete"
+    t.boolean "is_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cinemaroom_id"], name: "index_schedules_on_cinemaroom_id"
@@ -78,6 +79,7 @@ ActiveRecord::Schema.define(version: 20180425145950) do
 
   create_table "seat_types", force: :cascade do |t|
     t.integer "pay_ticket"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -88,7 +90,7 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.integer "num_of_collum"
     t.boolean "status"
     t.integer "cinemaroom_id"
-    t.boolean "is_delete"
+    t.boolean "is_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cinemaroom_id"], name: "index_seats_on_cinemaroom_id"
@@ -98,7 +100,7 @@ ActiveRecord::Schema.define(version: 20180425145950) do
   create_table "studios", force: :cascade do |t|
     t.string "name"
     t.boolean "status"
-    t.boolean "is_delete"
+    t.boolean "is_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -108,7 +110,7 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.integer "schedule_id"
     t.integer "user_id"
     t.boolean "status"
-    t.boolean "is_delete"
+    t.boolean "is_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["schedule_id"], name: "index_tickets_on_schedule_id"
@@ -126,7 +128,7 @@ ActiveRecord::Schema.define(version: 20180425145950) do
     t.string "email"
     t.boolean "status"
     t.integer "role"
-    t.boolean "is_delete"
+    t.boolean "is_delete", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

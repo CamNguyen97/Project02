@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email
       t.boolean :status
       t.integer :role, defaul: 0
-      t.boolean :is_delete
+      t.boolean :is_delete, default:false
 
       t.timestamps
     end

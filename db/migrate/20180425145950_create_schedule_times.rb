@@ -4,7 +4,7 @@ class CreateScheduleTimes < ActiveRecord::Migration[5.1]
       t.string :start_time
       t.string :end_time
       t.boolean :status
-      t.boolean :is_delete
+      t.boolean :is_delete, default:false
 
       t.timestamps
     end

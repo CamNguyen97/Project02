@@ -8,7 +8,8 @@ class CreateMovies < ActiveRecord::Migration[5.1]
       t.string :trailer
       t.string :image
       t.boolean :status
-      t.boolean :is_delete
+      t.references :studio, index: true, foreign_key: true
+      t.boolean :is_delete, default:false
 
       t.timestamps
     end
