@@ -1,6 +1,7 @@
 Rails.application.config.assets.version = "1.0"
 Rails.application.config.assets.precompile += %w(admin.css
-  ticket.css)
+  ticket.css
+  login.css)
 Rails.application.config.assets.precompile += %w(admin.js
   home_slide.js
   ticket.js

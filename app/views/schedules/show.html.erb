@@ -19,7 +19,7 @@
                                        <div class="tab-content showtimes">
                                           <div class="site sitecgv">
                                              <div class="site">
-                                                <h3><%= @schedules.name %></h3>
+                                                <h3><%= @movie.name %></h3>
                                              </div>
                                              <div class="cinema 2d">
                                                 <h4><%= t "type_schedule" %></h4>
@@ -29,8 +29,9 @@
                                                    <ul class="products-grid-movie tab-showtime" >
                                                       <li class="item" >
                                                          <%= link_to "ticket_path(@movie_name)" do %>
-                                                            <span><%= t "room" %>: <%= item.id %></span><br>
-                                                            <span><%= item.broadcasting_time %></span><br>
+                                                            <span><%= item.cinemaroom.name %></span><br>
+                                                            <span><%= item.schedule_time.start_time %></span><br>
+                                                            <span><%= @movie.broadcasting_time %></span><br>
                                                          <% end %>   
                                                          </a>
                                                       </li>

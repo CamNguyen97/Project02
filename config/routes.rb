@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   get "/contact", to: "contacts#index"
   get "/event", to: "events#index"
   get "/booking", to: "tickets#index"
+  
   resources :homes
   resources :searchs
   resources :schedules
+  resources :logins
   
   namespace :admin do
     resources :homes do
@@ -41,5 +43,5 @@ Rails.application.routes.draw do
     resources :schedule_times do
       get "delete"
     end
-   end
+  end
 end
