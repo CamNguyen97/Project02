@@ -1,7 +1,5 @@
 class Admin::StudiosController < Admin::ApplicationController
   before_action :studio_read, except: %w(index, create, new)
-
-  
   def index
   	@studios = Studio.all.where(is_delete: false)
   end
@@ -9,10 +7,9 @@ class Admin::StudiosController < Admin::ApplicationController
   def create
     @studio = Studio.new studio_params
     if @studio.save
-      flash[:success] = t "suscess"
+      flash[:success] = t "new_suscess"
       redirect_to admin_studios_path
     else
-      flash[:danger] = t "danger"
       render :new
     end
      respond_to do |format|
@@ -29,10 +26,9 @@ class Admin::StudiosController < Admin::ApplicationController
 
   def update
     if @studio.update_attributes studio_params
-      flash[:success] = t "suscess"
+      flash[:success] = t "update_suscess"
       redirect_to admin_studios_path
     else
-      flash[:danger] = t "danger"
       render :edit
     end
   end
@@ -44,10 +40,9 @@ class Admin::StudiosController < Admin::ApplicationController
   def destroy
     @studio_des = Studio.find_by id: params[:id]
     if @studio_des.update_attributes is_delete:true
-      flash[:success] = t "suscess"
+      flash[:success] = t "delete_suscess"
       redirect_to admin_studios_path
     else
-      flash[:danger] = t "danger"
       render :edit
     end
   end

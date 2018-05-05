@@ -4,6 +4,19 @@
     <div class="w3ls-reg">
       <div class="inputForm">
         <h2><%= t "lorem" %></h2>
+        <div class="mr_agilemain">
+          <div class="agileits-left">
+            <%= label_tag t("name") %>
+            <span>*</span>
+            <%= text_field_tag "","", {class: "Username"}%>
+          </div>
+          <div class="agileits-right">
+            <%= label_tag t("number_seat") %>
+            <span>*</span>
+            <%= number_field_tag "quantity", 1, class: "Numseats", min: 1 %>
+          </div>
+        </div>
+        <%= button_tag t("search_seat"), :onclick => "takeData()" %>
       </div>
       <div>
       <ul class="seat_w3ls">

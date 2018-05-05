@@ -3,3 +3,7 @@ booking_ticket:
 model:
   movie:
     num_movie_show: 5
+  users:
+    maximum_name: 30
+    minimum_password: 6
+    maximum_email: 255

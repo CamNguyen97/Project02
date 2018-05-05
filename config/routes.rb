@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get "/about", to: "abouts#index"
   get "/event", to: "events#index"
   get "/booking", to: "tickets#index"
-  
   resources :homes
   resources :searchs
   resources :tickets do

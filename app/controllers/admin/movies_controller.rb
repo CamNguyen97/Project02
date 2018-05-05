@@ -7,11 +7,11 @@ class Admin::MoviesController < Admin::ApplicationController
   def create
   	@movie = Movie.new movie_params
     if @movie.save
-      flash[:success] = t "suscess"
+      flash[:success] = t "new_suscess"
       redirect_to admin_movies_path
     else
-      flash[:danger] = t "danger"
-      render :new
+      flash[:danger] =  t "danger"
+      redirect_to admin_movies_path
     end
   end
 
@@ -26,11 +26,11 @@ class Admin::MoviesController < Admin::ApplicationController
   
   def update
   	if @movie.update_attributes movie_params
-      flash[:success] = t "suscess"
+      flash[:success] = t "update_suscess"
       redirect_to admin_movies_path
     else
-      flash[:danger] = t "danger"
-      render :edit
+      flash[:danger] =  t "danger"
+      redirect_to admin_movies_path
     end
   end
 
@@ -41,10 +41,9 @@ class Admin::MoviesController < Admin::ApplicationController
   def destroy
      @movie_d = Movie.find_by id: params[:id]
      if @movie_d.update_attributes is_delete:true
-     flash[:success] = t "suscess"
+     flash[:success] = t "delete_suscess"
       redirect_to admin_movies_path
     else
-      flash[:danger] = t "danger"
       render :edit
     end
   end
