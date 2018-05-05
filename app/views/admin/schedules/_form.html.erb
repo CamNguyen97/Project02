@@ -5,7 +5,8 @@
         <h4 class="modal-title"><%= label_tag yield(:text_head)%></h4>
       </div>
       <div class="modal-body">  
-    <%= form_for [:admin, @schedule] do |f| %>
+    <%= form_for [:admin, @schedule], remote: true do |f| %>
+    <%= render "shared/error_messages", :target => @schedule %>
     <div class="form-group">
       <%= f.label :schedule_time_id %>
       <%= f.select :schedule_time_id, @list_schedule_time,

@@ -6,21 +6,19 @@
       </div>
       <div class="modal-body">
         <%= form_for [:admin, @studio], remote: true do |f| %>
-			<div class="modal-body">
-				<div class="form-group">
-					<%= f.label :name %>
-					<%= f.text_field :name, class: "form-control" %>
-				</div>
-
-					<%= f.label :status %>
-				<div class="form-group">
-					<%= label :status, t("action") %>
-					<%= f.radio_button :status, "1",:checked => true %>
-					<%= label :status, t("unaction") %>
-					<%= f.radio_button :status, "0" %>
-				</div>
+        <%= render "shared/error_messages", :target => @studio %>
+			<div class="form-group">
+				<%= f.label :name %>
+				<%= f.text_field :name, class: "form-control" %>
 			</div>
 
+				<%= f.label :status %>
+			<div class="form-group">
+				<%= label :status, t("action") %>
+				<%= f.radio_button :status, "1",:checked => true %>
+				<%= label :status, t("unaction") %>
+				<%= f.radio_button :status, "0" %>
+			</div>
 			<div class="modal-footer">
 		   		<%= f.submit yield(:button_text), class: "btn btn-primary" %>
 		 	    <%= link_to "Cancel", "#", class: "btn btn-default", data: {dismiss: "modal"} %>

@@ -8,7 +8,7 @@
   Are you sure you wish to delete <b><%= @movietype_d.name %></b>?
   </div>
   <div class="modal-footer">
-    <%= link_to "Yes, Delete This Product", admin_movietype_path(@movietype_d), method: :delete, remote: true, class: "btn btn-danger" %>
+    <%= link_to "Yes, Delete", admin_movietype_path(@movietype_d), method: :delete, remote: true, class: "btn btn-danger" %>
     <%= link_to "No, Please Don't", "#", class: "btn btn-default", data: { dismiss: "modal" } %>
   </div>
   </div>

@@ -5,7 +5,8 @@
         <h4 class="modal-title"><%= label_tag yield(:text_head)%></h4>
       </div>
       <div class="modal-body">
-      <%= form_for [:admin, @cinemaroom] do |f| %>
+      <%= form_for [:admin, @cinemaroom], remote: true do |f| %>
+      <%= render "shared/error_messages", :target => @cinemaroom %>
       <div class="form-group">
         <%= f.label :name %>
         <%= f.text_field :name, class: "form-control" %>

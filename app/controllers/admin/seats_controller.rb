@@ -28,7 +28,7 @@ class Admin::SeatsController < Admin::ApplicationController
 
   def update
     if @seat.update_attributes seat_params
-      flash[:success] = t "suscess"
+      flash[:success] = t "update_suscess"
       redirect_to admin_seats_path
     else
       flash[:danger] = t "danger"

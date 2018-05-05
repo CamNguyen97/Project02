@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem "bootstrap-sass"
+gem "carrierwave", "1.2.2"
 gem "coffee-rails", "~> 4.2"
 gem "config"
 gem "figaro"
@@ -23,10 +24,6 @@ gem "sass-rails", "~> 5.0"
 gem "sqlite3"
 gem "turbolinks", "~> 5"
 gem "uglifier", ">= 1.3.0"
-gem "carrierwave", "1.2.2"
-gem "mini_magick", "4.7.0"
-gem "fog", "1.42"
-gem "figaro"
 gem "unf"
 gem "jquery-turbolinks"
 gem "devise"

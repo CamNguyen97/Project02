@@ -5,7 +5,8 @@
         <h4 class="modal-title"><%= label_tag yield(:text_head)%></h4>
       </div>
       <div class="modal-body">
-      <%= form_for [:admin, @movie] do |f| %>
+      <%= form_for [:admin, @movie], remote: true do |f| %>
+      <%= render "shared/error_messages", :target => @movie %>
         <div class="form-group">
           <%= f.label :name %>
           <%= f.text_field :name, class: "form-control" %>
@@ -19,8 +20,8 @@
           <div class="form-group">
           <%= f.label :studio_id %>
           <%= f.select :studio_id, @list_studio,
-                  {include_blank: "Choose one",selected: @movie.studio_id},
-                  {class: "form-control"} %>
+            {include_blank: "Choose one",selected: @movie.studio_id},
+            {class: "form-control"} %>
         </div>
 
         <div class="form-group">
@@ -63,3 +64,4 @@
     </div>
   </div>
   <%= javascript_include_tag "index_admin" %>
+  

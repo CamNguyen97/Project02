@@ -7,10 +7,9 @@ class Admin::MoviesMovietypesController < Admin::ApplicationController
   def create
     @movies_movietype = MoviesMovietype.new movies_movietype_params
     if @movies_movietype.save
-       flash[:success] = t "suscess"
+       flash[:success] = t "new_suscess"
       redirect_to admin_movies_movietypes_path
     else
-      flash[:danger] = t "danger"
       render :new
     end
   end
@@ -24,10 +23,9 @@ class Admin::MoviesMovietypesController < Admin::ApplicationController
 
   def update
     if @movies.update_attributes movies_movietype_params
-     flash[:success] = t "suscess"
+     flash[:success] = t "update_suscess"
       redirect_to admin_movies_movietypes_path
     else
-      flash[:danger] = t "danger"
       render :edit
     end
   end
@@ -39,10 +37,9 @@ class Admin::MoviesMovietypesController < Admin::ApplicationController
   def destroy
      @scheduleTime_d = ScheduleTime.find_by id: params[:schedule_id]
      if @scheduleTime_d.update_attributes is_delete:true
-     flash[:success] = t "suscess"
+     flash[:success] = t "delete_suscess"
       redirect_to admin_movies_movietypes_path
     else
-      flash[:danger] = t "danger"
       render :edit
     end
   end

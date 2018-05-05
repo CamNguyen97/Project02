@@ -7,4 +7,3 @@
 //= require turbolinks
 //= require rails-ujs
 //= require sb-admin-2
-

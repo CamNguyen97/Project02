@@ -7,10 +7,9 @@ class Admin::CinemaroomsController < Admin::ApplicationController
   def create
     @cinemaroom = Cinemaroom.new cinemaroom_params
     if @cinemaroom.save
-      flash[:success] = t "suscess"
+      flash[:success] = t "new_suscess"
       redirect_to admin_cinemarooms_path
     else
-      flash[:danger] = t "danger"
       render :new
     end
   end
@@ -24,10 +23,9 @@ class Admin::CinemaroomsController < Admin::ApplicationController
 
   def update
     if @cinemaroom.update_attributes cinemaroom_params
-      flash[:success] = t "suscess"
+      flash[:success] = t "update_suscess"
       redirect_to admin_cinemarooms_path
     else
-      flash[:danger] = t "danger"
       render :edit
     end
   end
@@ -39,10 +37,9 @@ class Admin::CinemaroomsController < Admin::ApplicationController
   def destroy
      @cinemaroom_d = Cinemaroom.find_by id: params[:id]
      if @cinemaroom_d.update_attributes is_delete:true
-      flash[:success] = t "suscess"
+      flash[:success] = t "delete_suscess"
       redirect_to admin_cinemarooms_path
     else
-      flash[:danger] = t "danger"
       render :edit
     end
   end

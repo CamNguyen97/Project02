@@ -1,7 +1,7 @@
 <% @studios.each_with_index do |item, index| %>
 <tr>
   <td class="text-center" ><%= Index index %></td>
-  <td><%= item.name %></td>
+  <td class= "text-left"><%= item.name %></td>
   <td class="text-center"><%= item.status %></td>
   <td>
     <%= link_to t("edit"), edit_admin_studio_path(item), remote: true, class:"btn btn-info" %>
