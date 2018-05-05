@@ -9,3 +9,6 @@
  *= require colorbox
  *= require custom-cgv
  */
+ .id_cinemaroom{
+ 	visibility: collapse;
+ }

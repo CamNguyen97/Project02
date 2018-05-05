@@ -2,7 +2,7 @@
     <tr>
         <td class="text-center" ><%= Index index %></td>
         <td><%= item.name %></td>
-          <td><%= Studio.find_by(id: item.studio_id).name %></td>
+        <td><%= Studio.find_by(id: item.studio_id).name %></td>
         <td class="text-center" ><%= item.year_produced %></td>
         <td class="number" ><%= item.broadcasting_time %></td>
         <td class="text-left" ><%= item.descreption %></td>

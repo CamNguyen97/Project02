@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   
   resources :homes
   resources :searchs
-  resources :schedules
+  resources :tickets do
+    get "Getvalue", action: "loadData"
+  end
   resources :logins
   
   namespace :admin do

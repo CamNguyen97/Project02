@@ -1,0 +1,90 @@
+<div id="img_page">
+  <h1><%= t "movies_seat" %></h1>
+  <div class="container">
+    <div class="w3ls-reg">
+      <div class="inputForm">
+        <h2><%= t "lorem" %></h2>
+      </div>
+      <div>
+      <ul class="seat_w3ls">
+        <li class="smallBox greenBox"><%= t "selected_seat" %></li>
+        <li class="smallBox redBox"><%= t "reserved_seat" %></li>
+        <li class="smallBox emptyBox"><%= t "empty_seat" %></li>
+      </ul>
+      <div class="seatStructure txt-center" >
+        <table id="seatsBlock" style="width: 50%;">
+        <tbody>
+          <tr>
+          <% @flag = 1 %>
+            <% while @flag <= @cinemaroom.sum_of_collum  do %>
+              <td><%= @flag %></td>
+              <% @flag += 1 %>
+              <% end %>
+          </tr>
+          <% @seat.in_groups_of(@cinemaroom.sum_of_collum, false) do |row_tasks| %>
+          <tr>
+            <% row_tasks.each do |task| %>
+              <td>  
+              <% if task.status == true %>
+                <%= check_box "post", "validated", {class: "seats", numOfrow: task.num_of_row, numOfcol: task.num_of_collum, seats: task.id, schedule_id:@schedule, user: @user} %>
+              <%else%>
+                <%= check_box "post", "", {class: "redBox_input", checked:"checked"} %>
+              <% end %>
+              </td>
+            <% end %>
+          </tr>
+          <% end %>
+        </tbody>
+        </table>
+        <div class="screen">
+          <h2 class="wthree"><%= t "screen" %></h2>
+        </div>
+        <%= button_tag t("confirm_selection"), class:"btn-sumit-book" %>
+      </div>
+      <div class="displayerBoxes txt-center" >
+        <table class="Displaytable w3ls-table" >
+          <tr>
+            <th><%= t "name" %></th>
+            <th><%= t "number_seat" %></th>
+            <th><%= t "seat" %></th>
+          </tr>
+          <tr>
+            <td>
+              <textarea id="nameDisplay"></textarea>
+            </td>
+            <td>
+              <textarea id="NumberDisplay"></textarea>
+            </td>
+            <td>
+              <textarea id="seatsDisplay"></textarea>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  $(".btn-sumit-book").click(function() {
+     var dataArray = new Array();
+    $('.seats').each(function(){
+      var jsonArg = new Object();
+      var num_of_row = $(this).attr('numofrow');
+      var num_of_columns = $(this).attr('numOfcol');
+      var seat = $(this).attr('seats');
+      var schedule = $(this).attr('schedule_id');
+      jsonArg.row = num_of_row;
+      jsonArg.columns = num_of_columns;
+      jsonArg.seat = seat;
+      jsonArg.schedule = schedule;
+      dataArray.push(jsonArg);
+    });
+      console.log(dataArray);
+    // $.ajax({
+    //   url: "/tickets/"+ a +"/Getvalue",
+    //   type: "GET",
+    //   success: function(data) {
+    //   }
+    // });
+  });
+</script>
