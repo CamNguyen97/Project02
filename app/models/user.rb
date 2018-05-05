@@ -16,4 +16,5 @@ class User < ApplicationRecord
   #   format: {with: VALID_EMAIL_REGEX}, uniqueness: {case_sensitive: false}
   # validates :phone, presence: true,
   #   format: {with: VALID_PHONE_REGEX}, uniqueness: {case_sensitive: false}
+
 end
