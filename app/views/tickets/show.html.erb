@@ -25,51 +25,34 @@
         <li class="smallBox emptyBox"><%= t "empty_seat" %></li>
       </ul>
       <div class="seatStructure txt-center" >
-        <table id="seatsBlock">
+        <table id="seatsBlock" style="width: 50%;">
+        <tbody>
           <tr>
-            <td></td>
-            <td><%= Settings.booking_ticket.seat %></td>
-            <td><%= Settings.booking_ticket.seat %></td>
-            <td><%= Settings.booking_ticket.seat %></td>
-            <td><%= Settings.booking_ticket.seat %></td>
-            <td><%= Settings.booking_ticket.seat %></td>
-            <td><%= Settings.booking_ticket.seat %></td>
-            <td><%= Settings.booking_ticket.seat %></td>
-            <td></td>
-            <td><%= Settings.booking_ticket.seat %></td>
-            <td><%= Settings.booking_ticket.seat %></td>
-            <td><%= Settings.booking_ticket.seat %></td>
-            <td><%= Settings.booking_ticket.seat %></td>
-            <td><%= Settings.booking_ticket.seat %></td>
-            <td><%= Settings.booking_ticket.seat %></td>
+          <% @flag = 1 %>
+            <% while @flag <= @cinemaroom.sum_of_collum  do %>
+              <td><%= @flag %></td>
+              <% @flag += 1 %>
+              <% end %>
           </tr>
+          <% @seat.in_groups_of(@cinemaroom.sum_of_collum, false) do |row_tasks| %>
           <tr>
-            <td><%= t "row" %></td>
-            <td>
-              <%= check_box "post", "validated", {class: "seats"} %>
-            </td>
-            </td>
-            <td class="seatGap"></td>
-            <td>
-              <%= check_box "post", "validated", {class: "seats"} %>
-            </td>
+            <% row_tasks.each do |task| %>
+              <td>  
+              <% if task.status == true %>
+                <%= check_box "post", "validated", {class: "seats", numOfrow: task.num_of_row, numOfcol: task.num_of_collum, seats: task.id, schedule_id:@schedule, user: @user} %>
+              <%else%>
+                <%= check_box "post", "", {class: "redBox_input", checked:"checked"} %>
+              <% end %>
+              </td>
+            <% end %>
           </tr>
-          <tr class="seatVGap"></tr>
-          <tr>
-            <td><%= t "row" %></td>
-            <td>
-              <%= check_box "post", "validated", {class: "seats"} %>
-            </td>
-            <td></td>
-            <td>
-              <%= check_box "post", "validated", {class: "seats"} %>
-            </td>
-          </tr>
+          <% end %>
+        </tbody>
         </table>
         <div class="screen">
           <h2 class="wthree"><%= t "screen" %></h2>
         </div>
-        <%= button_tag t("confirm_selection") %>
+        <%= button_tag t("confirm_selection"), class:"btn-sumit-book" %>
       </div>
       <div class="displayerBoxes txt-center" >
         <table class="Displaytable w3ls-table" >
@@ -94,4 +77,27 @@
     </div>
   </div>
 </div>
-<%= javascript_include_tag "booking" %>
+<script type="text/javascript">
+  $(".btn-sumit-book").click(function() {
+     var dataArray = new Array();
+    $('.seats').each(function(){
+      var jsonArg = new Object();
+      var num_of_row = $(this).attr('numofrow');
+      var num_of_columns = $(this).attr('numOfcol');
+      var seat = $(this).attr('seats');
+      var schedule = $(this).attr('schedule_id');
+      jsonArg.row = num_of_row;
+      jsonArg.columns = num_of_columns;
+      jsonArg.seat = seat;
+      jsonArg.schedule = schedule;
+      dataArray.push(jsonArg);
+    });
+      console.log(dataArray);
+    // $.ajax({
+    //   url: "/tickets/"+ a +"/Getvalue",
+    //   type: "GET",
+    //   success: function(data) {
+    //   }
+    // });
+  });
+</script>

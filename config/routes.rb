@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users
   root to: "homes#index"
   get "/about", to: "abouts#index"
-  get "/contact", to: "contacts#index"
   get "/event", to: "events#index"
   get "/booking", to: "tickets#index"
   resources :homes
   resources :searchs
-  resources :tickets
+  resources :tickets do
+    get "Getvalue", action: "loadData"
+  end
   resources :logins
   
   namespace :admin do

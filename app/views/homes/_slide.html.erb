@@ -3,11 +3,17 @@
     <section class="slider">
       <div class="flexslider">
         <ul class="slides">
-          <% @movie_top3.each do |movie| %>
+          <%# @movie_top3.each do |movie| %>
             <li>
-              <%= link_to image_tag("banner1.jpg", alt: ""), "" %>
+              <%= link_to image_tag("bn01.jpg", alt: ""), "" %>
             </li>
-          <% end %>
+            <li>
+              <%= link_to image_tag("bn02.jpg", alt: ""), "" %>
+            </li>
+            <li>
+              <%= link_to image_tag("bn03.jpg", alt: ""), "" %>
+            </li>
+          <%# end %>
         </ul>
       </div>
     </section>

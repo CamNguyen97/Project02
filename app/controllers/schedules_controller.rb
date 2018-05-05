@@ -4,7 +4,7 @@ class SchedulesController < ActionController::Base
   before_action :load_movie, only: :show
 
   def show
-  	@schedules = Schedule.joins(:schedule_time, :cinemaroom).where("schedules.movie_id=?", params[:id])
+  	@schedules = Schedule.join_cinemaroom_schedule_time.where("schedules.movie_id=?", params[:id])
   end
 
   def load_movie

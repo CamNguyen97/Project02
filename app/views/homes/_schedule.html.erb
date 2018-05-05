@@ -20,10 +20,10 @@
                                                 <h4><%= t "type_schedule" %></h4>
                                              </div>
                                              <div id="schedule_display">
-                                                <% @schedules.each do |item| %>
+                                                <% @schedules.each_with_index do |item, index| %>
                                                    <ul class="products-grid-movie tab-showtime" >
                                                       <li class="item" >
-                                                         <%= link_to ticket_path(@movie) do %>
+                                                         <%= link_to ticket_path(movie_id: @movie.id,cinemaroom_id: item.cinemaroom.id, schedule_id: item.id), class:"item_ticket" do %>
                                                             <span><%= item.cinemaroom.name %></span><br>
                                                             <span><%= item.schedule_time.start_time %></span><br>
                                                             <span><%= @movie.broadcasting_time %></span><br>
@@ -55,3 +55,12 @@
       </div>
    </div>
 </div>
+<script type="text/javascript">
+   // $(".item_ticket").click(function() {
+   //    var val_id = $(".id_cinemaroom").attr("data-id");
+   //    $.ajax({
+   //    type: "GET",
+   //    url: "/tickets/"+val_id+"/data_cinemaroom",
+   //    });
+   // });
+</script>

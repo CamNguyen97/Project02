@@ -20,6 +20,8 @@ class Movie < ApplicationRecord
     .limit 3
   end
 
+  
+
   def self.search search, id
     if search
       where(["name LIKE ?", "%#{search}%"])
