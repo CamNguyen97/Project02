@@ -1,10 +1,9 @@
 class Admin::ApplicationController < ActionController::Base
-  before_action :check_admin?
+ # before_action :check_admin?
   protect_from_forgery with: :exception
   layout "admin"
 
   def check_admin?
-	byebug  	
-  	current_user.admin?
+  	current_user.role?
   end
 end
