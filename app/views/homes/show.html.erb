@@ -3,7 +3,7 @@
     <div class="content-top">
       <div class="section group">
         <div class="about span_1_of_2">
-          <h3><%= t "last_movie" %></h3>
+          <h3><%= t "details_movie" %></h3>
           <div class="about-top">
             <div class="grid images_3_of_2">
               <%= link_to image_tag("#{@movie.image}", alt: "", class: "col-img") %>
@@ -18,23 +18,21 @@
                 <%= t "broadcasing_time" %><%= @movie.broadcasting_time %>
                 <%= t "minute" %>
               </p>
-              <p><%= @movie.descreption %></p>
+              <p class="css-text"><%= @movie.descreption %></p>
               <%= link_to t("watch"), "#{@movie.trailer}", class: "watch_but" %>
               <%= button_tag t("booking-ticket"), :onclick => "document.getElementById('id02').style.display='block'", class: "booking-ticket" %>
             </div>
             <div class="clear"></div>
             <div class="type-with-movie">
-              <h3><%= t "type_with_movie" %></h3>
+              <h3><%= t "type_width_movie" %></h3>
               <div class="type-with-movie-div">
-              <% if !@movie_type.nil? || !@movie_type_id.nil? || !@movie_lq.nil? %>
                 <% @movie_lq.each do |movielq| %>
                   <div>
-                    <%= link_to image_tag("#{movielq.movie.image}", alt: "", class: "type-with-movie-image"), home_path(movielq) %>
+                    <%= link_to image_tag("#{movielq.movie.image}", alt: "", class: "type-with-movie-image"), home_path(movielq.movie.id) %>
                     <p class="type-with-movie-p"><%= movielq.movie.name %></p>
                     <div class="clear"></div>
                   </div>
                 <% end %>
-              <% end %>
               </div>
             </div>
           </div>
@@ -46,7 +44,6 @@
               <%= link_to image_tag("#{movie.image}", alt: "", class: "col-top3-image"), home_path(movie) %>
             <div class="div-top3-infor">
                 <%= movie.name %>
-                <%= link_to t("watch"), "#{movie.trailer}", class: "watch_but" %>
               </div>
               <div class="clear"></div>
             </div>

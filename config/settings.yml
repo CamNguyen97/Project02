@@ -1,3 +1,5 @@
+helper:
+  num_index: 1
 booking_ticket:
   seat: 1
 model:
@@ -7,3 +9,6 @@ model:
     maximum_name: 30
     minimum_password: 6
     maximum_email: 255
+homes:
+  movie_lq: 
+search: 3

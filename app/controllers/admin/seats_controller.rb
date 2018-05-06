@@ -1,5 +1,5 @@
 class Admin::SeatsController < Admin::ApplicationController
-  require 'json'
+  require "json"
   before_action :seat_read, except: %W(index create new)
   def index
     @page_type = Cinemaroom.all.where(is_delete: false).collect{ |u| [u.name, u.id]}

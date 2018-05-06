@@ -16,9 +16,9 @@ class Admin::ScheduleTimesController < Admin::ApplicationController
       end
     else
       if !check_time?
-        flash[:danger] =  "start_time = end_time or start_time < end_time"
+        flash[:danger] =  t "time_used"
       else
-        flash[:danger] =  "thoi gian chieu da ton tai"
+        flash[:danger] =  t "data_used"
       end
       redirect_to admin_schedule_times_path
     end
@@ -33,21 +33,12 @@ class Admin::ScheduleTimesController < Admin::ApplicationController
   end
 
   def update
-    if @schedule_date.empty? & check_time?
-      if @schedule_time.update_attributes scheduleTime_param
-        flash[:success] = t "update_suscess"
-        redirect_to admin_schedule_times_path
-      else
-        flash[:danger] = t "danger"
-        render :edit
-      end
-    else
-      if !check_time?
-        flash[:danger] =  "start_time = end_time or start_time < end_time"
-      else
-        flash[:danger] =  "thoi gian chieu da ton tai"
-      end
+    if @schedule_time.update_attributes scheduleTime_param
+      flash[:success] = t "update_suscess"
       redirect_to admin_schedule_times_path
+    else
+      flash[:danger] = t "danger"
+      render :edit
     end
   end
 

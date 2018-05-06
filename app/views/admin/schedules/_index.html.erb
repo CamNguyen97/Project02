@@ -9,7 +9,7 @@
     <td><%= Cinemaroom.find_by(id: item.cinemaroom_id).name %></td>
     <td class="text-center"><%= item.status %></td>
     <td>
-      <%= link_to t("edit"), edit_admin_schedule_path(item), remote: true, class:"btn btn-info update-time" %>
+      <%#= link_to t("edit"), edit_admin_schedule_path(item), remote: true, class:"btn btn-info update-time" %>
     <%= link_to t("delete"), admin_schedule_delete_path(item), remote: true, class:"btn btn-danger" %>
     </td>
   </tr>

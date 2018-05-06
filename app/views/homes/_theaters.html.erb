@@ -1,17 +1,11 @@
-<div class="listview_1_of_3">
+<div class="listview_1_of_3 images_1_of_3">
   <h3> <%= t "film studio" %></h3>
   <% @studios.each do |studio| %>
     <div class="content-left content-studio">
       <%= image_tag "logo_studio.png", alt: "", class: "img_studio" %>
-      <div class="text list_1_of_2">
-        <div class="extra-wrap">
-          <%= link_to studio.studio.name, "", class: "link4" %><br>
-          <span class="color1"> <%= t "country" %></span><br>
-          <%= t "genre" %><%= link_to t("lorem"), "#", class: "color2" %><br>
-          <span class="link-top"> <%= t "actors" %><%= link_to t("lorem"), "#",
-            class: "link2" %> </span>
+      <div style="margin-top: 50px;">
+          <%= studio.studio.name %><br>
         </div>
-      </div>
       <div class="clear"></div>
     </div>
     <br>

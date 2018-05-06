@@ -1,11 +1,11 @@
 <div class="modal-dialog">
   <div class="modal-content">
   <div class="modal-header">
-    <h3>Update role</h3>
+    <h3><%= t "update" %></h3>
   </div>
   <div class="modal-body">
   <ul class="errors"></ul>
-     Update role for <b><%= @user.email %></b>?
+     <%= t "update" %> <b><%= @user.email %></b>?
   </div>
   <div class="modal-body">
      <%= form_for [:admin, @user], remote: true do |f| %>

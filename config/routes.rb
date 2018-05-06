@@ -1,17 +1,16 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root to: "homes#index"
-  get "/about", to: "abouts#index"
-  get "/event", to: "events#index"
-  get "/booking", to: "tickets#index"
-  resources :homes
-  resources :searchs
-  resources :tickets do
-    get "Getvalue", action: "loadData"
-  end
-  resources :logins
-  
-  namespace :admin do
+  scope "(:locale)", locale: /en|vi/ do
+   devise_for :users
+    root to: "homes#index"
+    get "/event", to: "events#index"
+    get "/booking", to: "tickets#index"
+    resources :homes
+    resources :searchs
+    resources :tickets do
+      get "Getvalue", action: "loadData"
+    end
+
+    namespace :admin do
     resources :homes do
       get "delete"
     end
@@ -44,5 +43,7 @@ Rails.application.routes.draw do
     resources :schedule_times do
       get "delete"
     end
+    end
+
   end
 end

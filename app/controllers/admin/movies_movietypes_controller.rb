@@ -15,7 +15,7 @@ class Admin::MoviesMovietypesController < Admin::ApplicationController
         redirect_to admin_movies_movietypes_path
       end
     else
-      flash[:danger] =  "du lieu da ton tai"
+      flash[:danger] =  t "data_used"
       redirect_to admin_movies_movietypes_path
     end
   end
@@ -32,16 +32,11 @@ class Admin::MoviesMovietypesController < Admin::ApplicationController
   end
   
   def update
-    if @search_duplicate.empty?
-      if @movies_movietype.update_attributes movies_movietype_params
-        flash[:success] = t "update_suscess"
-        redirect_to admin_movies_movietypes_path
-      else
-        flash[:danger] =  t "danger"
-        redirect_to admin_movies_movietypes_path
-      end
+    if @movies_movietype.update_attributes movies_movietype_params
+      flash[:success] = t "update_suscess"
+      redirect_to admin_movies_movietypes_path
     else
-      flash[:danger] =  "du lieu da ton tai"
+      flash[:danger] =  t "danger"
       redirect_to admin_movies_movietypes_path
     end
   end

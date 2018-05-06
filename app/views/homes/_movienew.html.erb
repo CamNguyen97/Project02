@@ -14,10 +14,29 @@
           </h1>
           <%= movie.year_produced.strftime("%d/%m/%Y") %>
           <br>
-          <span class="text-top"><%= movie.descreption %></span>
+          <p class="text-top descreption" style="text-align: justify;"><%= movie.descreption %></p>
         </div>
       </div>
       <div class="clear"></div>
     </div>
   <% end %>
 </div>
+<script>
+  $(function(){
+      $.fn.limit = function($n){
+          this.each(function(){
+              var allText   = $(this).html();
+              var tLength   = $(this).html().length;
+              var startText = allText.slice(0,$n);
+              if(tLength >= $n){
+                  $(this).html(startText+'...');
+              }else {
+                  $(this).html(startText);
+              };
+          });
+          
+          return this;
+      }
+      $('.descreption').limit(80);
+  });
+</script>

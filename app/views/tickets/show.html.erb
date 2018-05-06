@@ -3,7 +3,6 @@
   <div class="container">
     <div class="w3ls-reg">
       <div class="inputForm">
-        <h2><%= t "lorem" %></h2>
         <div class="mr_agilemain">
           <div class="agileits-left">
             <%= label_tag t("name") %>
@@ -11,7 +10,6 @@
             <%= text_field_tag "",@user.email, {class: "Username", style:"width:300px ;"}%>
           </div>
         </div>
-        <%= button_tag t("search_seat"), :onclick => "takeData()" %>
       </div>
       <div>
       <ul class="seat_w3ls">
@@ -35,7 +33,7 @@
               <td>  
               <% if task.status == true %>
                 <%= check_box_tag "post",value = "0", checked = false, {class: "seats", numOfrow: task.num_of_row, numOfcol: task.num_of_collum, seats: task.id, schedule_id:@schedule, user: @user.id} %>
-              <%else%>
+              <% else %>
                 <%= check_box_tag "post", value = "0", {class: "redBox_input", checked:"checked", style:"backgroup-color:red;"} %>
               <% end %>
               </td>
@@ -64,6 +62,13 @@
             </td>
           </tr>
         </table>
+        <%= button_tag t("tong_tien"), class:"btn-sum-money", :onclick =>"document.getElementById('sum_money').style.display='block'"%>
+        <a id="sum_money", class= "modal" style="color: white;" >
+          <span onclick="document.getElementById('sum_money').style.display='none'" 
+            class="close" title="Close Modal">&times;</span>
+          <%= @cinemaroom.name%><br/>
+          <%= @sum  %><br/>
+        </a>
       </div>
     </div>
   </div>

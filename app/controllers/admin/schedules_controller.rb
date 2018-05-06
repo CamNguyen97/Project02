@@ -1,6 +1,6 @@
 class Admin::SchedulesController < Admin::ApplicationController
   before_action :schedule_read, except: %W(index create new)
-  before_action :search_duplicates, only: %W(create update)
+  before_action :search_duplicates, only: %W(create)
   def index
     @schedules = Schedule.all.where(is_delete: false)
   end
@@ -15,7 +15,7 @@ class Admin::SchedulesController < Admin::ApplicationController
         redirect_to admin_schedules_path
       end
     else
-      flash[:danger] =  "lich chieu bi trung"
+      flash[:danger] =  t "data_used"
       redirect_to admin_schedules_path
     end
   end
@@ -34,16 +34,11 @@ class Admin::SchedulesController < Admin::ApplicationController
   end
 
   def update
-    if @schedule_date.empty?
-      if @schedule.update_attributes schedule_params
-        flash[:success] = t "update_suscess"
-        redirect_to admin_schedules_path
-      else
-        flash[:danger] = t "danger"
-        redirect_to admin_schedules_path
-      end
+    if @schedule.update_attributes schedule_params
+      flash[:success] = t "update_suscess"
+      redirect_to admin_schedules_path
     else
-      flash[:danger] =  "lich chieu bi trung"
+      flash[:danger] = t "danger"
       redirect_to admin_schedules_path
     end
   end
@@ -81,6 +76,6 @@ class Admin::SchedulesController < Admin::ApplicationController
   def search_duplicates
     @schedule = Schedule.new schedule_params
     @schedule_date = Schedule.select("*")
-      .where("schedules.date_movie=? and schedules.schedule_time_id=? and schedules.cinemaroom_id=? and schedules.status=?", @schedule.date_movie, @schedule.schedule_time_id, @schedule.cinemaroom_id, @schedule.status)
+      .where("schedules.date_movie=? and schedules.schedule_time_id=? and schedules.cinemaroom_id=? and schedules.status=? and schedules.is_delete=?", @schedule.date_movie, @schedule.schedule_time_id, @schedule.cinemaroom_id, @schedule.status, :f)
   end
 end

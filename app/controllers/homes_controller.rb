@@ -13,7 +13,7 @@ class HomesController < ApplicationController
     @movie_type_id = MoviesMovietype.find_by(id: @movie_type.ids)
     @movie_lq = MoviesMovietype.join_movie_movietype
       .where("movietypes.id=? and movies.id!=?", @movie_type_id.movietype_id, params[:id])
-      .limit 5
+      .limit Settings.homes.movie_lq
   end
 
   private

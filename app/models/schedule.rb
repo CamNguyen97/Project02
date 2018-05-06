@@ -11,6 +11,6 @@ class Schedule < ApplicationRecord
   validates :cinemaroom_id, presence: true
 
   scope :join_cinemaroom_schedule_time, -> do
-    joins(:schedule_time, :cinemaroom)
+    joins(:schedule_time, :cinemaroom).where(status: :t)
   end
 end

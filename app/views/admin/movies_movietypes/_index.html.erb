@@ -4,7 +4,7 @@
         <td><%= Movie.find_by(id: item.movie_id).name %></td>
         <td><%= Movietype.find_by(id: item.movietype_id).name %></td>
         <td>
-          <%= link_to t("edit"), edit_admin_movies_movietype_path(item), remote: true, class:"btn btn-info" %>
+          <%#= link_to t("edit"), edit_admin_movies_movietype_path(item), remote: true, class:"btn btn-info" %>
           <%= link_to t("delete"), admin_movies_movietype_delete_path(item), remote: true, class:"btn btn-danger" %>
         </td>
     </tr>

@@ -1,27 +1,29 @@
-<div class="content">
-  <div class="wrap">
-    <div class="content-top">
-      <div class="section group">
-        <div class="about span_1_of_2">
-          <h3><%= t "search_movie" %></h3>
-          <% @movies.each do |movie| %>
-            <div class="about-top">
-              <div class="grid images_3_of_2">
-                <%= link_to image_tag("pic13.jpg", alt: "", class: "col"), "#" %>
-              </div>
-              <div class="desc span_3_of_2">
-                <h4><%= movie.name %></h4>
-                <p class="p-link"><%= link_to t("lorem"),"#", class: "link1" %></p>
-                <p><%= movie.descreption %></p>
-                <%= link_to t("watch"), "#", class: "watch_but" %>
-                <%= link_to t("booking_ticket"), schedule_path(movie.id), class: "booking-ticket" %>
-              </div>
-              <div class="clear"></div>
+<div class="content-top" >
+  <h3><%= t "search_movie" %></h3>
+  <div class="section group" style="margin-left: 10%;">
+    <div class="about span_1_of_2" style="display: flex;">
+      <div class="">
+        <% @movies.each do |movie| %>
+          <div class="content-left">
+            <div class="listimg listimg_1_of_2">
+              <%= link_to image_tag("#{movie.image}", alt: ""), home_path(movie) %>
             </div>
-          <% end %>
-          <%= link_to t("more_movie"), "#", class: "watch_but" %>
+            <div class="clear"></div>
+          </div>
+        <% end %>
+      </div>
+      <div style="margin-left: 30px;margin-top: 10px;">
+        <% @movies.each do |movie| %>
+        <div class="middle-list">
+          <div class="listimg1">
+            <iframe width="700" height="320" src="<%= movie.trailer %>">
+            </iframe>
+          </div>
+          <div class="clear"></div>
         </div>
-      <div class="clear"></div>
+        <% end %>
+      </div>
     </div>
-  </div>
+  <div class="clear"></div>
 </div>
+<div class="paginate"><%= paginate @movies %></div>

@@ -25,8 +25,6 @@ class Movie < ApplicationRecord
   def self.search search, id
     if search
       where(["name LIKE ?", "%#{search}%"])
-    else
-      scope
     end
   end
 end

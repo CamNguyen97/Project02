@@ -48,7 +48,8 @@ class Admin::CinemaroomsController < Admin::ApplicationController
   private
 
   def cinemaroom_params
-  	params.require(:cinemaroom).permit :name, :descreption,:status, :sum_of_row, :sum_of_collum 
+  	params.require(:cinemaroom).permit :name, :descreption,:status,
+      :sum_of_row, :sum_of_collum 
   end
 
   def cinemaroom_read
