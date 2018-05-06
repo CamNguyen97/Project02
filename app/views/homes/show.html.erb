@@ -26,6 +26,7 @@
             <div class="type-with-movie">
               <h3><%= t "type_with_movie" %></h3>
               <div class="type-with-movie-div">
+              <% if !@movie_type.nil? || !@movie_type_id.nil? || !@movie_lq.nil? %>
                 <% @movie_lq.each do |movielq| %>
                   <div>
                     <%= link_to image_tag("#{movielq.movie.image}", alt: "", class: "type-with-movie-image"), home_path(movielq) %>
@@ -33,6 +34,7 @@
                     <div class="clear"></div>
                   </div>
                 <% end %>
+              <% end %>
               </div>
             </div>
           </div>

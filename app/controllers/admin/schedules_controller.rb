@@ -81,6 +81,6 @@ class Admin::SchedulesController < Admin::ApplicationController
   def search_duplicates
     @schedule = Schedule.new schedule_params
     @schedule_date = Schedule.select("*")
-      .where("schedules.date_movie=? and schedules.schedule_time_id=? and schedules.cinemaroom_id=?", @schedule.date_movie, @schedule.schedule_time_id, @schedule.cinemaroom_id)
+      .where("schedules.date_movie=? and schedules.schedule_time_id=? and schedules.cinemaroom_id=? and schedules.status=?", @schedule.date_movie, @schedule.schedule_time_id, @schedule.cinemaroom_id, @schedule.status)
   end
 end

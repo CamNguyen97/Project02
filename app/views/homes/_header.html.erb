@@ -9,7 +9,23 @@
           <li class="current_page_item"><%= link_to t("home"), root_path %></li>
           <li><%= link_to t("event"), event_path %></li>
           <% if user_signed_in? %>
-            <li><%= link_to t("logout"), destroy_user_session_path, :method => "delete" %></li>
+            <li>
+              <div class="dropdown1">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="">
+                  <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <div class="dropdown1-content">
+                  <% if current_user.role? %>
+                    <%= link_to admin_homes_path do %>
+                      <i class="fa fa-cogs fa-fw"></i><%= t "home" %>
+                    <% end %>
+                  <% end %>
+                  <%= link_to destroy_user_session_path, :method => "delete" do %>
+                    <i class="fa fa-sign-out fa-fw"></i> <%= t "logout" %>
+                  <% end %>
+                </div>
+              </div>
+            </li>
           <% else %>
             <li><%= link_to t("login"), new_user_session_path %></li>
           <% end %>

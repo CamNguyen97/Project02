@@ -1,0 +1,12 @@
+<% @users.each_with_index do |item, index| %>
+<tr>
+  <td class="text-center" ><%= Index index %></td>
+  <td class= "text-left"><%= item.email %></td>
+  <td class="text-center"><%= item.role %></td>
+  <td class="text-center"><%= item.status %></td>
+  <td>
+    <%= link_to t("update"), edit_admin_user_path(item), remote: true, class:"btn btn-info" %>
+    <%= link_to t("delete"), admin_user_delete_path(item), remote: true, class:"btn btn-danger" %>
+  </td>
+</tr>
+<% end %>

@@ -12,21 +12,10 @@
           <%= render "headerTable" %>
         </thead>
         <tbody>
-          <% @users.each_with_index do |item, index| %>
-          <tr>
-            <td><%= Index index %></td>
-            <td><%= item.name %></td>
-            <td><%= item.address %></td>
-            <td><%= item.phone %></td>
-            <td><%= item.email %></td>
-            <td><%= item.status %></td>
-            <td><%= item.role %></td>
-          </tr>
-          <% end %>
+          <%= render "index" %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-
-
+<div id="product-modal" class="modal fade" role= "dialog"></div>

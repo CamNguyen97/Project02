@@ -2,32 +2,23 @@
   <li class="breadcrumb-item">
     <%= link_to t("dashboard") %>
   </li>
-  <li class="breadcrumb-item active"><%= t ".movies_movietype" %></li>
-   <%= button_tag t("add"), class: "btn btn-primary btn-add btn-movie_movietypes" %>
+  <li class="breadcrumb-item active"><%= t "menu.user" %></li>
+   <%= link_to t("add"), new_admin_movies_movietype_path, remote: true, class: "btn btn-primary" %>
 </ol>
 <div class="card mb-3">
   <div class="card-body">
     <div class="table-responsive">
       <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
-          <%= render "headerTable" %>
+        <tr>
+          <%= render "headerTable"%>
+        </tr>
         </thead>
         <tbody>
-          <% @movies_movietypes.each_with_index do |item, index| %>
-          <tr>
-            <td><%= Index index %></td>
-            <td><%= item.movie_id %></td>
-            <td><%= item.movietype_id %></td>
-            <td>
-              <%= link_to t("edit"), edit_admin_movies_movietype_path(item), class:"btn btn-info" %>
-              <%= link_to t("delete"), admin_movies_movietypes_path(item), class:"btn btn-danger", method: :delete,data: { confirm: 'Are you sure?' } %>
-            </td>
-          </tr>
-          <% end %>
-        </tbody>
+          <%= render "index"%>
+        </tbody class="product-index">
       </table>
     </div>
   </div>
 </div>
-
-
+<div id="product-modal" class="modal fade" role= "dialog"></div>

@@ -8,6 +8,7 @@
  *= require csslogin
  *= require colorbox
  *= require custom-cgv
+ *= require drop_menu
  */
  .id_cinemaroom{
  	visibility: collapse;

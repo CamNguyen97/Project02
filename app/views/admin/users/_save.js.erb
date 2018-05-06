@@ -1,0 +1,8 @@
+$(".errors").html("")
+<% if @user.errors.any? %>
+  <% @user.errors.full_messages.each do |message| %>
+    $(".errors").html("<%= message.html_safe %>")
+  <% end %>
+<% else %>
+  $("#product-modal").modal("hide")
+<% end %>
