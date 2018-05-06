@@ -6,7 +6,7 @@ class CreateTickets < ActiveRecord::Migration[5.1]
       t.references :user, index: true, foreign_key: true
       t.boolean :status
       t.boolean :is_delete, default:false
-
+      t.integer :find_or_create_by, default:1
 
       t.timestamps
     end

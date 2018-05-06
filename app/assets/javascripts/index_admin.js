@@ -142,7 +142,6 @@ $("#seat_add").click(function(){
     }
   }
   var data = JSON.stringify(pluginArrayArg);
-  console.log(data);
   $.ajax({
     url: '/admin/seats/',
     type: 'POST',

@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20180503041744) do
     t.integer "user_id"
     t.boolean "status"
     t.boolean "is_delete", default: false
+    t.integer "find_or_create_by", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["schedule_id"], name: "index_tickets_on_schedule_id"

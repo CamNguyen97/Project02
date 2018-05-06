@@ -8,12 +8,7 @@
           <div class="agileits-left">
             <%= label_tag t("name") %>
             <span>*</span>
-            <%= text_field_tag "","", {class: "Username"}%>
-          </div>
-          <div class="agileits-right">
-            <%= label_tag t("number_seat") %>
-            <span>*</span>
-            <%= number_field_tag "quantity", 1, class: "Numseats", min: 1 %>
+            <%= text_field_tag "",@user.email, {class: "Username", style:"width:300px ;"}%>
           </div>
         </div>
         <%= button_tag t("search_seat"), :onclick => "takeData()" %>
@@ -39,9 +34,9 @@
             <% row_tasks.each do |task| %>
               <td>  
               <% if task.status == true %>
-                <%= check_box "post", "validated", {class: "seats", numOfrow: task.num_of_row, numOfcol: task.num_of_collum, seats: task.id, schedule_id:@schedule, user: @user} %>
+                <%= check_box_tag "post",value = "0", checked = false, {class: "seats", numOfrow: task.num_of_row, numOfcol: task.num_of_collum, seats: task.id, schedule_id:@schedule, user: @user.id} %>
               <%else%>
-                <%= check_box "post", "", {class: "redBox_input", checked:"checked"} %>
+                <%= check_box_tag "post", value = "0", {class: "redBox_input", checked:"checked", style:"backgroup-color:red;"} %>
               <% end %>
               </td>
             <% end %>
@@ -59,7 +54,6 @@
           <tr>
             <th><%= t "name" %></th>
             <th><%= t "number_seat" %></th>
-            <th><%= t "seat" %></th>
           </tr>
           <tr>
             <td>
@@ -68,9 +62,6 @@
             <td>
               <textarea id="NumberDisplay"></textarea>
             </td>
-            <td>
-              <textarea id="seatsDisplay"></textarea>
-            </td>
           </tr>
         </table>
       </div>
@@ -78,26 +69,39 @@
   </div>
 </div>
 <script type="text/javascript">
+  $("input[type='checkbox']").change(function() {
+    $(this).attr('value', '1');
+  });
+
+
   $(".btn-sumit-book").click(function() {
-     var dataArray = new Array();
+     var dataArray = [];
     $('.seats').each(function(){
       var jsonArg = new Object();
-      var num_of_row = $(this).attr('numofrow');
-      var num_of_columns = $(this).attr('numOfcol');
       var seat = $(this).attr('seats');
       var schedule = $(this).attr('schedule_id');
-      jsonArg.row = num_of_row;
-      jsonArg.columns = num_of_columns;
-      jsonArg.seat = seat;
-      jsonArg.schedule = schedule;
+      var user = $(this).attr('user');
+      var status = $(this).attr('value');
+      jsonArg.seat_id = seat;
+      jsonArg.schedule_id = schedule;
+      jsonArg.user_id = user;
+      jsonArg.status = status;
       dataArray.push(jsonArg);
     });
-      console.log(dataArray);
-    // $.ajax({
-    //   url: "/tickets/"+ a +"/Getvalue",
-    //   type: "GET",
-    //   success: function(data) {
-    //   }
-    // });
+      var data = JSON.stringify(dataArray);
+    $.ajax({
+      url: "/tickets",
+      type: "POST",
+      data: {obj:data},
+      success: function(data) {
+        document.getElementById("nameDisplay").value = $(".Username").val();
+         $('.seats').each(function(){
+          var status = $(this).attr('value');
+          if(status == 1){
+            document.getElementById("NumberDisplay").value = $(this).attr("numOfrow")+""+ $(this).attr("num_of_collum");
+          }
+         });
+      }
+    });
   });
 </script>
